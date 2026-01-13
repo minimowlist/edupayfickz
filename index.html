@@ -190,18 +190,29 @@ iframe{
 .btn-copy-inline{
   width:auto;
   padding:4px 6px;
-  font-size:13px;
   border:none;
   background:#e5e7eb;
   border-radius:6px;
   cursor:pointer;
   line-height:1;
   flex-shrink:0;
+  transition:background 0.2s ease;
 }
 
 .btn-copy-inline i{
   font-size:13px;
   color:#111;
+  transition:transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* state sukses */
+.btn-copy-inline.copied{
+  background:#dcfce7; /* hijau lembut */
+}
+
+.btn-copy-inline.copied i{
+  color:#16a34a;
+  transform:scale(1.15);
 }
 </style>
 
@@ -225,6 +236,25 @@ function toggleVideo(id){
   });
   const el = document.getElementById(id);
   el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+}
+function copyNominal(btn){
+  const nominal = "550000"; // angka bersih
+  navigator.clipboard.writeText(nominal);
+
+  const icon = btn.querySelector('i');
+
+  // simpan ikon awal
+  const originalClass = icon.className;
+
+  // ubah ke state sukses
+  icon.className = "fa-solid fa-check";
+  btn.classList.add('copied');
+
+  // balik ke semula setelah 1.2 detik
+  setTimeout(() => {
+    icon.className = originalClass;
+    btn.classList.remove('copied');
+  }, 1200);
 }
 </script>
 
@@ -252,10 +282,13 @@ function toggleVideo(id){
 
   <div class="amount-row">
     <div class="amount" id="nominal-text">Rp 550.000</div>
-    <button class="btn-copy-inline" onclick="copyNominal()" title="Salin Nominal">
+    <button
+  class="btn-copy-inline"
+  onclick="copyNominal(this)"
+  title="Salin Nominal"
+>
   <i class="fa-solid fa-copy"></i>
 </button>
-
   </div>
 
   <div class="note">
