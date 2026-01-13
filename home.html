@@ -271,40 +271,60 @@ body{
   </section>
 
 <!-- TOGGLE MENU -->
-<div class="mini-toggle-content">
-  <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:13px">
-    <span>Total Dibayar</span>
-    <strong>Rp 3.750.000</strong>
+<div class="mini-toggle collapsed" id="ringkasanToggle">
+  <div class="mini-toggle-header" onclick="toggleMini('ringkasanToggle')">
+    <div class="mini-toggle-title">
+      <i class="fa-solid fa-chart-pie"></i>
+      Ringkasan Tahun Ajaran 2025/2026
+    </div>
+    <i class="fa-solid fa-chevron-down mini-chevron"></i>
   </div>
-  <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:13px">
-    <span>Sisa Tahun Ini</span>
-    <strong>Rp 1.250.000</strong>
+
+  <div class="mini-toggle-content">
+    <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:13px">
+      <span>Total Dibayar</span>
+      <strong>Rp 3.750.000</strong>
+    </div>
+    <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:13px">
+      <span>Sisa Tahun Ini</span>
+      <strong>Rp 1.250.000</strong>
+    </div>
   </div>
 </div>
 
-<div class="mini-toggle-content">
-  <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:13px">
-    <span>
-      <i class="fa-solid fa-check-circle" style="color:#22c55e;margin-right:6px"></i>
-      SPP Januari 2026
-    </span>
-    <strong>Rp 500.000</strong>
+<div class="mini-toggle collapsed" id="historiToggle">
+  <div class="mini-toggle-header" onclick="toggleMini('historiToggle')">
+    <div class="mini-toggle-title">
+      <i class="fa-solid fa-clock-rotate-left"></i>
+      Histori Terakhir
+    </div>
+    <i class="fa-solid fa-chevron-down mini-chevron"></i>
   </div>
 
-  <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:13px">
-    <span>
-      <i class="fa-solid fa-check-circle" style="color:#22c55e;margin-right:6px"></i>
-      SPP Desember 2025
-    </span>
-    <strong>Rp 500.000</strong>
-  </div>
+  <div class="mini-toggle-content">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:13px">
+      <span>
+        <i class="fa-solid fa-check-circle" style="color:#22c55e;margin-right:6px"></i>
+        SPP Januari 2026
+      </span>
+      <strong>Rp 500.000</strong>
+    </div>
 
-  <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:13px">
-    <span>
-      <i class="fa-solid fa-check-circle" style="color:#22c55e;margin-right:6px"></i>
-      Uang Kegiatan
-    </span>
-    <strong>Rp 250.000</strong>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:13px">
+      <span>
+        <i class="fa-solid fa-check-circle" style="color:#22c55e;margin-right:6px"></i>
+        SPP Desember 2025
+      </span>
+      <strong>Rp 500.000</strong>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:13px">
+      <span>
+        <i class="fa-solid fa-check-circle" style="color:#22c55e;margin-right:6px"></i>
+        Uang Kegiatan
+      </span>
+      <strong>Rp 250.000</strong>
+    </div>
   </div>
 </div>
 
