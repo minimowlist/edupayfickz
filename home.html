@@ -74,6 +74,37 @@ body{
   box-shadow:0 6px 18px rgba(0,0,0,.06);
   margin-bottom:16px;
 }
+/* ===== SIMPLE ROW (RINGKASAN & HISTORI) ===== */
+.simple-row{
+  background:#ffffff;
+  border-radius:14px;
+  padding:14px 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,.05);
+  text-decoration:none;
+  color:var(--text);
+}
+
+.simple-row .left{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:600;
+  font-size:14px;
+}
+
+.simple-row i{
+  color:var(--green-dark);
+  font-size:16px;
+}
+
+.simple-row .chevron{
+  color:#9ca3af;
+  font-size:14px;
+}
 
 /* ===== TAGIHAN ===== */
 .tagihan{
@@ -105,36 +136,6 @@ body{
   font-size:14px;
   color:var(--green-dark);
   text-decoration:none;
-}
-
-/* ===== TOGGLE ===== */
-.toggle-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  cursor:pointer;
-  user-select:none;
-  padding:4px 0;              /* ⬅️ tambahan */
-}
-.toggle-header .left{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-weight:700;
-  font-size:14px;
-}
-.chevron{
-  transition:transform .25s ease;
-  color:var(--muted);
-}
-.card.collapsed .chevron{
-  transform:rotate(-90deg);
-}
-.toggle-content{
-  overflow:hidden;
-  height:auto;
-  transition:height .3s ease;
-  padding-top:14px;           /* ⬅️ BARU */
 }
 
 /* ===== SUMMARY ===== */
@@ -189,10 +190,6 @@ body{
   margin-top:10px;
   font-size:14px;
 }
-.card.collapsed .toggle-content{
-  height:0 !important;
-  overflow:hidden;
-}
 </style>
 </head>
 
@@ -227,61 +224,23 @@ body{
     <a href="#" class="link">Lihat rincian tagihan →</a>
   </section>
 
-  <!-- RINGKASAN (DEFAULT HIDE) -->
-  <section class="card summary collapsed" id="summaryCard">
-    <div class="toggle-header" onclick="toggleCard('summaryCard')">
-      <div class="left">
-        <i class="fa-solid fa-chart-pie"></i>
-        RINGKASAN TAHUN AJARAN 2025/2026
-      </div>
-      <i class="fa-solid fa-chevron-down chevron"></i>
-    </div>
-    <div class="toggle-content">
-      <div class="row">
-        <span>Total Dibayar</span>
-        <strong>Rp 3.750.000</strong>
-      </div>
-      <div class="row">
-        <span>Sisa Tahun Ini</span>
-        <strong>Rp 1.250.000</strong>
-      </div>
-    </div>
-  </section>
+<!-- RINGKASAN TAHUN AJARAN -->
+<a href="#" class="simple-row">
+  <div class="left">
+    <i class="fa-solid fa-chart-pie"></i>
+    Ringkasan Tahun Ajaran 2025/2026
+  </div>
+  <i class="fa-solid fa-chevron-right chevron"></i>
+</a>
 
-  <!-- HISTORI (DEFAULT HIDE) -->
-  <section class="card collapsed" id="historyCard">
-    <div class="toggle-header" onclick="toggleCard('historyCard')">
-      <div class="left">
-        <i class="fa-solid fa-clock-rotate-left"></i>
-        HISTORI TERAKHIR
-      </div>
-      <i class="fa-solid fa-chevron-down chevron"></i>
-    </div>
-    <div class="toggle-content">
-      <div class="history-item">
-        <div class="history-left">
-          <i class="fa-solid fa-check-circle"></i>
-          SPP Januari 2026
-        </div>
-        <strong>Rp 500.000</strong>
-      </div>
-      <div class="history-item">
-        <div class="history-left">
-          <i class="fa-solid fa-check-circle"></i>
-          SPP Desember 2025
-        </div>
-        <strong>Rp 500.000</strong>
-      </div>
-      <div class="history-item">
-        <div class="history-left">
-          <i class="fa-solid fa-check-circle"></i>
-          Uang Kegiatan
-        </div>
-        <strong>Rp 250.000</strong>
-      </div>
-      <a href="#" class="link">Lihat semua histori →</a>
-    </div>
-  </section>
+<!-- HISTORI TERAKHIR -->
+<a href="#" class="simple-row">
+  <div class="left">
+    <i class="fa-solid fa-clock-rotate-left"></i>
+    Histori Terakhir
+  </div>
+  <i class="fa-solid fa-chevron-right chevron"></i>
+</a>
 
   <!-- MENU -->
   <section class="grid">
@@ -304,45 +263,6 @@ body{
   </section>
 
 </main>
-
-<script>
-function toggleCard(id){
-  const card = document.getElementById(id);
-  const content = card.querySelector('.toggle-content');
-  const isCollapsed = card.classList.contains('collapsed');
-
-  if(isCollapsed){
-    /* ===== EXPAND ===== */
-    card.classList.remove('collapsed');
-
-    content.style.height = '0px';
-
-    requestAnimationFrame(() => {
-      content.style.height = content.scrollHeight + 'px';
-    });
-
-    content.addEventListener('transitionend', function openHandler(e){
-      if(e.propertyName !== 'height') return;
-      content.style.height = 'auto';
-      content.removeEventListener('transitionend', openHandler);
-    });
-
-  }else{
-    /* ===== COLLAPSE ===== */
-    content.style.height = content.scrollHeight + 'px';
-
-    requestAnimationFrame(() => {
-      content.style.height = '0px';
-    });
-
-    content.addEventListener('transitionend', function closeHandler(e){
-      if(e.propertyName !== 'height') return;
-      card.classList.add('collapsed');   // ⬅️ DI SINI, SETELAH ANIMASI
-      content.removeEventListener('transitionend', closeHandler);
-    });
-  }
-}
-</script>
 
 </body>
 </html>
