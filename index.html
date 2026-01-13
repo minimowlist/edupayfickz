@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pembayaran SPP</title>
+
+<style>
+body{
+  font-family: system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+  background:#f5f7fa;
+  margin:0;
+  padding:16px;
+  color:#111;
+}
+.container{
+  max-width:480px;
+  margin:auto;
+}
+h2{
+  text-align:center;
+  margin:8px 0 16px;
+}
+h3{
+  margin:0 0 8px;
+  font-size:16px;
+}
+.card{
+  background:#fff;
+  border-radius:12px;
+  padding:16px;
+  margin-bottom:16px;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+}
+.va{
+  font-size:22px;
+  font-weight:bold;
+  text-align:center;
+  letter-spacing:1px;
+  margin:10px 0;
+}
+.amount{
+  font-size:18px;
+  font-weight:bold;
+  text-align:center;
+}
+button{
+  width:100%;
+  padding:12px;
+  border-radius:8px;
+  border:none;
+  cursor:pointer;
+  font-size:15px;
+}
+.btn-copy{
+  background:#2563eb;
+  color:#fff;
+  margin-top:8px;
+}
+.btn-video{
+  width:auto;
+  padding:6px 10px;
+  font-size:13px;
+}
+.btn-wa{
+  background:#16a34a;
+  color:#fff;
+  font-size:16px;
+  font-weight:bold;
+}
+.note{
+  font-size:12px;
+  color:#555;
+  margin-top:6px;
+  text-align:center;
+}
+.method{
+  margin-top:14px;
+  padding-top:14px;
+  border-top:1px solid #eee;
+}
+.method-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.steps{
+  font-size:13px;
+  color:#444;
+  padding-left:18px;
+  margin:6px 0;
+}
+.estimate{
+  font-size:12px;
+  color:#666;
+}
+.video-box{
+  display:none;
+  margin-top:8px;
+}
+iframe{
+  width:100%;
+  height:220px;
+  border-radius:8px;
+}
+
+.bank-summary{
+  font-size:13px;
+  color:#444;
+  margin-bottom:12px;
+}
+.accordion{margin-top:8px;}
+.acc-btn{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px;
+  border:none;
+  border-radius:8px;
+  background:#f1f5f9;
+  margin-top:6px;
+  cursor:pointer;
+  font-size:14px;
+  font-weight:600;
+}
+.bank-icon{
+  width:28px;
+  height:auto;
+}
+.bank-label{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.acc-panel{
+  display:none;
+  padding:8px 12px 10px;
+  border-left:2px solid #e5e7eb;
+  margin-left:10px;
+}
+.steps{
+  font-size:13px;
+  color:#444;
+  padding-left:18px;
+  margin:6px 0;
+}
+.estimate{
+  font-size:12px;
+  color:#666;
+  margin-bottom:6px;
+}
+.btn-video{
+  background:#e5e7eb;
+  border:none;
+  padding:6px 10px;
+  border-radius:6px;
+  cursor:pointer;
+  font-size:12px;
+}
+.video-box{
+  display:none;
+  margin-top:8px;
+}
+.video-box iframe{
+  width:100%;
+  height:220px;
+  border-radius:8px;
+}
+</style>
+
+<script>
+function copyVA(){
+  navigator.clipboard.writeText("800008080024066");
+  alert("Nomor pembayaran berhasil disalin");
+}
+
+function toggleAcc(id){
+  document.querySelectorAll('.acc-panel').forEach(p=>{
+    if(p.id !== id) p.style.display = 'none';
+  });
+  const el = document.getElementById(id);
+  el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+}
+
+function toggleVideo(id){
+  document.querySelectorAll('.video-box').forEach(v=>{
+    if(v.id !== id) v.style.display = 'none';
+  });
+  const el = document.getElementById(id);
+  el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+}
+</script>
+
+</head>
+
+<body>
+<div class="container">
+
+<h2>Pembayaran SPP</h2>
+
+<!-- NOMOR PEMBAYARAN -->
+<div class="card">
+  <h3>Nomor Pembayaran (Virtual Account)</h3>
+  <div class="va">80000 808 0024066</div>
+  <button class="btn-copy" onclick="copyVA()">📋 Salin Nomor</button>
+  <div class="note">
+    Gunakan nomor ini pada menu <b>Virtual Account / Pembayaran</b>  
+    di aplikasi bank Anda
+  </div>
+</div>
+
+<!-- NOMINAL -->
+<div class="card">
+  <h3>Nominal yang Dibayarkan</h3>
+  <div class="amount">Rp 550.000</div>
+  <div class="note">Status pembayaran akan tercatat otomatis</div>
+</div>
+
+<!-- CARA PEMBAYARAN -->
+<div class="card">
+  <h3>Cara Pembayaran</h3>
+
+ <div class="method">
+  <div class="method-header">
+    <div class="bank-label">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Logo_BRI.png/1280px-Logo_BRI.png"
+        alt="BRI"
+        class="bank-icon"
+      >
+      <strong>BRI Mobile / Internet Banking</strong>
+    </div>
+
+    <button class="btn-video" onclick="toggleVideo('v-brimo')">
+      🎥 Video
+    </button>
+  </div>
+
+  <!-- STEPS (TIDAK HILANG) -->
+  <ol class="steps">
+    <li>Buka aplikasi <b>BRI Mobile</b></li>
+    <li>Pilih menu <b>BRIVA / Virtual Account</b></li>
+    <li>Masukkan <b>Nomor Pembayaran</b></li>
+    <li>Periksa nama dan nominal, lalu konfirmasi</li>
+  </ol>
+
+  <div class="estimate">⏱ Estimasi waktu: ±1 menit</div>
+
+  <!-- VIDEO -->
+  <div id="v-brimo" class="video-box">
+    <iframe
+      src="https://www.youtube.com/embed/VIDEO_ID_BRIMO"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+</div>
+
+
+  <div class="method">
+    <div class="method-header">
+      <strong>🏧 ATM</strong>
+      <button class="btn-video" onclick="toggleVideo('v-atm')">🎥 Video</button>
+    </div>
+    <ol class="steps">
+      <li>Pilih menu Pembayaran / Virtual Account</li>
+      <li>Masukkan nomor pembayaran</li>
+      <li>Konfirmasi transaksi</li>
+    </ol>
+    <div class="estimate">⏱ Estimasi waktu: ±2 menit</div>
+    <div id="v-atm" class="video-box">
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID_ATM" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- BANK LAIN -->
+<div class="method">
+<div class="card">
+  <h3>🏦 Pembayaran melalui Bank Lain</h3>
+
+  <!-- Ringkasan Umum -->
+  <div class="bank-summary">
+    <strong>Alur Umum Pembayaran:</strong><br>
+    1) Buka aplikasi mobile banking / internet banking bank Anda<br>
+    2) Pilih menu <b>Pembayaran</b> atau <b>Virtual Account</b><br>
+    3) Masukkan <b>Nomor Pembayaran</b><br>
+    4) Periksa informasi, lalu konfirmasi transaksi<br>
+    <span class="estimate">⏱ Estimasi waktu: ±1–2 menit</span>
+  </div>
+
+  <!-- Accordion -->
+  <div class="accordion">
+
+    <!-- BCA -->
+    <button class="acc-btn" onclick="toggleAcc('bca')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" class="bank-icon">
+      Bank Central Asia (BCA)
+    </button>
+    <div id="bca" class="acc-panel">
+      <ol class="steps">
+        <li>Buka <b>BCA Mobile</b> atau <b>KlikBCA</b></li>
+        <li>Pilih menu <b>Pembayaran / Virtual Account</b></li>
+        <li>Masukkan Nomor Pembayaran</li>
+        <li>Konfirmasi transaksi</li>
+      </ol>
+      <div class="estimate">⏱ ±1 menit</div>
+      <button class="btn-video" onclick="toggleVideo('vid-bca')">🎥 Lihat Video Panduan</button>
+      <div id="vid-bca" class="video-box">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_BCA" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- BNI -->
+    <button class="acc-btn" onclick="toggleAcc('bni')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Bank_Negara_Indonesia_logo_%282004%29.svg" class="bank-icon">
+      Bank Negara Indonesia (BNI)
+    </button>
+    <div id="bni" class="acc-panel">
+      <ol class="steps">
+        <li>Buka <b>BNI Mobile Banking / Wondr by BNI</b></li>
+        <li>Pilih menu <b>Pembayaran / Virtual Account</b></li>
+        <li>Masukkan Nomor Pembayaran</li>
+        <li>Konfirmasi transaksi</li>
+      </ol>
+      <div class="estimate">⏱ ±1 menit</div>
+      <button class="btn-video" onclick="toggleVideo('vid-bni')">🎥 Lihat Video Panduan</button>
+      <div id="vid-bni" class="video-box">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_BNI" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- BSI -->
+    <button class="acc-btn" onclick="toggleAcc('bsi')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Bank_Syariah_Indonesia.svg" class="bank-icon">
+      Bank Syariah Indonesia (BSI)
+    </button>
+    <div id="bsi" class="acc-panel">
+      <ol class="steps">
+        <li>Buka <b>BSI Mobile / BYOND BSI</b></li>
+        <li>Pilih menu <b>Pembayaran / Virtual Account</b></li>
+        <li>Masukkan Nomor Pembayaran</li>
+        <li>Konfirmasi transaksi</li>
+      </ol>
+      <div class="estimate">⏱ ±1–2 menit</div>
+      <button class="btn-video" onclick="toggleVideo('vid-bsi')">🎥 Lihat Video Panduan</button>
+      <div id="vid-bsi" class="video-box">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_BSI" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- Mandiri -->
+    <button class="acc-btn" onclick="toggleAcc('mandiri')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Bank_Mandiri_logo_2016.svg" class="bank-icon">
+      Bank Mandiri
+    </button>
+    <div id="mandiri" class="acc-panel">
+      <ol class="steps">
+        <li>Buka aplikasi <b>Livin’ by Mandiri</b></li>
+        <li>Pilih menu <b>Pembayaran / Virtual Account</b></li>
+        <li>Masukkan Nomor Pembayaran</li>
+        <li>Konfirmasi transaksi</li>
+      </ol>
+      <div class="estimate">⏱ ±1 menit</div>
+      <button class="btn-video" onclick="toggleVideo('vid-mandiri')">🎥 Lihat Video Panduan</button>
+      <div id="vid-mandiri" class="video-box">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_MANDIRI" allowfullscreen></iframe>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  
+</div>
+
+<!-- KONFIRMASI / BANTUAN -->
+<div class="card">
+  <a href="https://wa.me/62812XXXXXXX?text=Assalamu%E2%80%99alaikum%2C%20saya%20ingin%20konfirmasi%20pembayaran%20SPP.%20Terima%20kasih."
+     target="_blank" style="text-decoration:none;">
+    <button class="btn-wa">Butuh Bantuan? Hubungi Bendahara</button>
+  </a>
+  <div class="note">Pembayaran online lebih cepat dan tidak perlu datang ke sekolah</div>
+</div>
+
+</div>
+</body>
+</html>
