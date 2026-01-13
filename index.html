@@ -241,6 +241,45 @@ iframe{
   font-size:14px;
   text-align:center;
 }
+
+/* === BUTTON VIDEO (GLOBAL & KONSISTEN) === */
+.btn-video {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 8px 14px;
+  background: #f1f5f9;
+  color: #2563eb;
+
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-video:hover {
+  background: #e2e8f0;
+}
+
+/* === PAKSA MATIKAN TOMBOL VIDEO LAMA VENDOR === */
+.video-btn,
+.btn-video-brimo,
+.video-button,
+button.video {
+  display: none !important;
+}
+
+.payment-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
 </style>
 
 <script>
@@ -371,9 +410,9 @@ function loadYoutube(el){
       <strong>BRI Mobile / Internet Banking</strong>
     </div>
 
-    <button class="btn-video" onclick="toggleVideo('v-brimo')">
-      🎥 Video
-    </button>
+    <a href="#" class="btn-video">
+  🎥 Video
+</a>
   </div>
 
   <ol class="steps">
@@ -399,7 +438,9 @@ function loadYoutube(el){
 
   <div class="method-header">
     <strong>🏧 ATM</strong>
-    <button class="btn-video" onclick="toggleVideo('v-atm')">🎥 Video</button>
+    <a href="#" class="btn-video">
+  🎥 Video
+</a>
   </div>
 
   <ol class="steps">
