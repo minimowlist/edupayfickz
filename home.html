@@ -131,14 +131,12 @@ body{
 }
 .toggle-content{
   overflow:hidden;
-  max-height:1000px;
-  transition:max-height .3s ease, opacity .2s ease;
-  margin-top:12px;
+  height:auto;
+  transition:height .3s ease;
 }
-.card.collapsed .toggle-content{
-  max-height:0;
-  opacity:0;
-  margin-top:0;
+.toggle-content.is-collapsing,
+.toggle-content.is-expanding{
+  overflow:hidden;
 }
 
 /* ===== SUMMARY ===== */
@@ -306,9 +304,45 @@ body{
 </main>
 
 <script>
+<script>
 function toggleCard(id){
-  document.getElementById(id).classList.toggle('collapsed');
+  const card = document.getElementById(id);
+  const content = card.querySelector('.toggle-content');
+  const isCollapsed = card.classList.contains('collapsed');
+
+  if(isCollapsed){
+    // EXPAND
+    card.classList.remove('collapsed');
+    content.style.height = '0px';
+    content.classList.add('is-expanding');
+
+    requestAnimationFrame(() => {
+      content.style.height = content.scrollHeight + 'px';
+    });
+
+    content.addEventListener('transitionend', function handler(){
+      content.style.height = 'auto';
+      content.classList.remove('is-expanding');
+      content.removeEventListener('transitionend', handler);
+    });
+
+  }else{
+    // COLLAPSE
+    content.style.height = content.scrollHeight + 'px';
+    content.classList.add('is-collapsing');
+
+    requestAnimationFrame(() => {
+      content.style.height = '0px';
+    });
+
+    content.addEventListener('transitionend', function handler(){
+      card.classList.add('collapsed');
+      content.classList.remove('is-collapsing');
+      content.removeEventListener('transitionend', handler);
+    });
+  }
 }
+</script>
 </script>
 
 </body>
