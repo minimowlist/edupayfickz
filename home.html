@@ -5,19 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>EduPay – Home</title>
 
-<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
 :root{
   --green:#1e9e6a;
   --green-dark:#158a5a;
-  --green-soft:#e8f6f0;
   --bg:#f6f8f7;
   --card:#ffffff;
   --yellow:#fff8e6;
   --text:#1f2937;
   --muted:#6b7280;
+  --line:#e5e7eb;
 }
 
 *{box-sizing:border-box}
@@ -34,45 +33,37 @@ body{
     linear-gradient(135deg,#1e9e6a,#38b78a),
     radial-gradient(circle at top right,rgba(255,255,255,.28),transparent 60%);
   color:#fff;
-  padding:
-    calc(14px + env(safe-area-inset-top))
-    16px
-    22px;
+  padding:calc(14px + env(safe-area-inset-top)) 16px 22px;
   border-bottom-left-radius:22px;
   border-bottom-right-radius:22px;
 }
 .header-top{
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
 }
 .brand{
   display:flex;
   align-items:center;
   gap:8px;
   font-weight:700;
-  letter-spacing:.2px;
 }
-.brand i{opacity:.95}
 .avatar{
   width:40px;
   height:40px;
   border-radius:50%;
-  border:2px solid rgba(255,255,255,.75);
+  border:2px solid rgba(255,255,255,.8);
   object-fit:cover;
-  box-shadow:0 4px 10px rgba(0,0,0,.18);
 }
 .greet{
   margin-top:10px;
 }
 .greet small{
-  display:block;
-  opacity:.9;
   font-size:13px;
+  opacity:.9;
 }
 .greet h1{
   font-size:17px;
-  line-height:1.25;
   margin:2px 0 4px;
 }
 .greet p{
@@ -96,30 +87,26 @@ body{
   box-shadow:0 6px 18px rgba(0,0,0,.06);
   margin-bottom:16px;
 }
-
-/* ===== TAGIHAN ===== */
-.tagihan{
-  background:linear-gradient(#fffdf4,#fff8e6);
-  border:1px solid #fde68a;
-  box-shadow:
-    0 8px 20px rgba(0,0,0,.08),
-    inset 0 1px 0 rgba(255,255,255,.6);
-}
-.tagihan .label{
+.card-title{
   display:flex;
   align-items:center;
   gap:8px;
   font-weight:700;
   font-size:14px;
+  margin-bottom:10px;
 }
-.tagihan .label i{color:#f59e0b}
-.tagihan .amount{
+
+/* ===== TAGIHAN ===== */
+.tagihan{
+  background:linear-gradient(#fffdf4,#fff8e6);
+  border:1px solid #fde68a;
+}
+.amount{
   font-size:30px;
   font-weight:800;
-  margin:10px 0 6px;
-  letter-spacing:.3px;
+  margin:6px 0;
 }
-.tagihan .due{
+.muted{
   color:var(--muted);
   font-size:14px;
 }
@@ -134,7 +121,6 @@ body{
   color:#fff;
   font-weight:800;
   text-decoration:none;
-  box-shadow:0 6px 14px rgba(30,158,106,.35);
 }
 .link{
   display:block;
@@ -145,14 +131,43 @@ body{
   text-decoration:none;
 }
 
-/* ===== MENU GRID ===== */
+/* ===== SUMMARY ===== */
+.summary .row{
+  display:flex;
+  justify-content:space-between;
+  padding:8px 0;
+  border-bottom:1px solid var(--line);
+  font-size:14px;
+}
+.summary .row:last-child{border-bottom:none}
+
+/* ===== HISTORY ===== */
+.history-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 0;
+  border-bottom:1px solid var(--line);
+  font-size:14px;
+}
+.history-item:last-child{border-bottom:none}
+.history-left{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.history-left i{
+  color:var(--green);
+}
+
+/* ===== MENU ===== */
 .grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:14px;
 }
 .menu{
-  background:linear-gradient(#ffffff,#fafafa);
+  background:#fff;
   border-radius:18px;
   padding:20px 10px;
   text-align:center;
@@ -170,14 +185,6 @@ body{
   margin-top:10px;
   font-size:14px;
 }
-.menu:active{
-  transform:translateY(1px);
-}
-
-/* ===== FOOTER SAFE SPACE ===== */
-.safe{
-  height:16px;
-}
 </style>
 </head>
 
@@ -187,12 +194,9 @@ body{
 <header class="header">
   <div class="header-top">
     <div class="brand">
-      <i class="fa-solid fa-book-open"></i>
-      EduPay
+      <i class="fa-solid fa-book-open"></i> EduPay
     </div>
-    <a href="#" title="Profil Siswa">
-      <img class="avatar" src="https://i.pravatar.cc/80?img=12" alt="Profil Siswa">
-    </a>
+    <img class="avatar" src="https://i.pravatar.cc/80?img=12" alt="Profil">
   </div>
 
   <div class="greet">
@@ -202,24 +206,73 @@ body{
   </div>
 </header>
 
-<!-- CONTENT -->
 <main class="container">
 
   <!-- TAGIHAN AKTIF -->
   <section class="card tagihan">
-    <div class="label">
-      <i class="fa-solid fa-circle"></i>
+    <div class="card-title">
+      <i class="fa-solid fa-circle" style="color:#f59e0b"></i>
       TAGIHAN AKTIF
     </div>
     <div class="amount">Rp 1.250.000</div>
-    <div class="due">Jatuh Tempo: 20 Januari 2026</div>
+    <div class="muted">Jatuh Tempo: 20 Januari 2026</div>
     <a href="#" class="btn">
       <i class="fa-solid fa-credit-card"></i> Bayar Sekarang
     </a>
     <a href="#" class="link">Lihat rincian tagihan →</a>
   </section>
 
-  <!-- MENU UTAMA -->
+  <!-- RINGKASAN TAHUN -->
+  <section class="card summary">
+    <div class="card-title">
+      <i class="fa-solid fa-chart-pie"></i>
+      RINGKASAN TAHUN AJARAN 2025/2026
+    </div>
+    <div class="row">
+      <span>Total Dibayar</span>
+      <strong>Rp 3.750.000</strong>
+    </div>
+    <div class="row">
+      <span>Sisa Tahun Ini</span>
+      <strong>Rp 1.250.000</strong>
+    </div>
+  </section>
+
+  <!-- HISTORI TERAKHIR -->
+  <section class="card">
+    <div class="card-title">
+      <i class="fa-solid fa-clock-rotate-left"></i>
+      HISTORI TERAKHIR
+    </div>
+
+    <div class="history-item">
+      <div class="history-left">
+        <i class="fa-solid fa-check-circle"></i>
+        SPP Januari 2026
+      </div>
+      <strong>Rp 500.000</strong>
+    </div>
+
+    <div class="history-item">
+      <div class="history-left">
+        <i class="fa-solid fa-check-circle"></i>
+        SPP Desember 2025
+      </div>
+      <strong>Rp 500.000</strong>
+    </div>
+
+    <div class="history-item">
+      <div class="history-left">
+        <i class="fa-solid fa-check-circle"></i>
+        Uang Kegiatan
+      </div>
+      <strong>Rp 250.000</strong>
+    </div>
+
+    <a href="#" class="link">Lihat semua histori →</a>
+  </section>
+
+  <!-- MENU -->
   <section class="grid">
     <a class="menu" href="#">
       <i class="fa-solid fa-wallet"></i>
@@ -239,7 +292,6 @@ body{
     </a>
   </section>
 
-  <div class="safe"></div>
 </main>
 
 </body>
