@@ -229,6 +229,18 @@ iframe{
   color:#16a34a;
   transform:scale(1.15);
 }
+.yt-thumb{
+  height:220px;
+  background:#000;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:14px;
+  text-align:center;
+}
 </style>
 
 <script>
@@ -284,6 +296,16 @@ function copyNominal(btn){
     icon.className = originalClass;
     btn.classList.remove('copied');
   }, 1200);
+}
+function loadYoutube(el){
+  const id = el.dataset.video;
+  el.innerHTML = `
+    <iframe
+      src="https://www.youtube.com/embed/${id}?autoplay=1"
+      allowfullscreen
+      style="width:100%;height:220px;border-radius:8px;">
+    </iframe>
+  `;
 }
 </script>
 
@@ -365,10 +387,9 @@ function copyNominal(btn){
 
   <!-- VIDEO -->
   <div id="v-brimo" class="video-box">
-    <iframe
-      src="https://www.youtube.com/embed/VIDEO_ID_BRIMO"
-      allowfullscreen>
-    </iframe>
+    <div class="yt-thumb" data-video="VIDEO_ID_BRIMO"
+       onclick="loadYoutube(this)">
+    ▶️ Tonton Video Panduan
   </div>
 
 </div>
@@ -386,7 +407,9 @@ function copyNominal(btn){
     </ol>
     <div class="estimate">⏱ Estimasi waktu: ±2 menit</div>
     <div id="v-atm" class="video-box">
-      <iframe src="https://www.youtube.com/embed/VIDEO_ID_ATM" allowfullscreen></iframe>
+      <div class="yt-thumb" data-video="VIDEO_ID_BRIMO"
+       onclick="loadYoutube(this)">
+    ▶️ Tonton Video Panduan
     </div>
   </div>
 
@@ -423,7 +446,9 @@ function copyNominal(btn){
       <div class="estimate">⏱ ±1 menit</div>
       <button class="btn-video" onclick="toggleVideo('vid-bca')">🎥 Lihat Video Panduan</button>
       <div id="vid-bca" class="video-box">
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID_BCA" allowfullscreen></iframe>
+        <div class="yt-thumb" data-video="VIDEO_ID_BRIMO"
+       onclick="loadYoutube(this)">
+    ▶️ Tonton Video Panduan
       </div>
     </div>
 
@@ -442,7 +467,9 @@ function copyNominal(btn){
       <div class="estimate">⏱ ±1 menit</div>
       <button class="btn-video" onclick="toggleVideo('vid-bni')">🎥 Lihat Video Panduan</button>
       <div id="vid-bni" class="video-box">
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID_BNI" allowfullscreen></iframe>
+        <div class="yt-thumb" data-video="VIDEO_ID_BRIMO"
+       onclick="loadYoutube(this)">
+    ▶️ Tonton Video Panduan
       </div>
     </div>
 
@@ -461,7 +488,9 @@ function copyNominal(btn){
       <div class="estimate">⏱ ±1–2 menit</div>
       <button class="btn-video" onclick="toggleVideo('vid-bsi')">🎥 Lihat Video Panduan</button>
       <div id="vid-bsi" class="video-box">
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID_BSI" allowfullscreen></iframe>
+        <div class="yt-thumb" data-video="VIDEO_ID_BRIMO"
+       onclick="loadYoutube(this)">
+    ▶️ Tonton Video Panduan
       </div>
     </div>
 
@@ -480,7 +509,9 @@ function copyNominal(btn){
       <div class="estimate">⏱ ±1 menit</div>
       <button class="btn-video" onclick="toggleVideo('vid-mandiri')">🎥 Lihat Video Panduan</button>
       <div id="vid-mandiri" class="video-box">
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID_MANDIRI" allowfullscreen></iframe>
+        <div class="yt-thumb" data-video="VIDEO_ID_BRIMO"
+       onclick="loadYoutube(this)">
+    ▶️ Tonton Video Panduan
       </div>
     </div>
 
