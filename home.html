@@ -6,7 +6,7 @@
 <title>EduPay – Home</title>
 
 <!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
 :root{
@@ -28,45 +28,67 @@ body{
   color:var(--text);
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
 .header{
   background:
     linear-gradient(135deg,#1e9e6a,#38b78a),
-    radial-gradient(circle at top right,rgba(255,255,255,.25),transparent 60%);
+    radial-gradient(circle at top right,rgba(255,255,255,.28),transparent 60%);
   color:#fff;
   padding:
-    calc(16px + env(safe-area-inset-top))
+    calc(14px + env(safe-area-inset-top))
     16px
-    26px;
+    22px;
   border-bottom-left-radius:22px;
   border-bottom-right-radius:22px;
 }
-.header .app{
+.header-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.brand{
   display:flex;
   align-items:center;
   gap:8px;
   font-weight:700;
-  opacity:.95;
-  margin-bottom:12px;
+  letter-spacing:.2px;
 }
-.header h1{
+.brand i{opacity:.95}
+.avatar{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  border:2px solid rgba(255,255,255,.75);
+  object-fit:cover;
+  box-shadow:0 4px 10px rgba(0,0,0,.18);
+}
+.greet{
+  margin-top:10px;
+}
+.greet small{
+  display:block;
+  opacity:.9;
+  font-size:13px;
+}
+.greet h1{
   font-size:17px;
-  margin:0;
+  line-height:1.25;
+  margin:2px 0 4px;
 }
-.header p{
-  margin:6px 0 0;
+.greet p{
+  margin:0;
   font-size:13px;
   opacity:.9;
 }
 
-/* CONTAINER */
+/* ===== CONTAINER ===== */
 .container{
   padding:16px;
   max-width:480px;
   margin:auto;
 }
 
-/* CARD */
+/* ===== CARD ===== */
 .card{
   background:var(--card);
   border-radius:18px;
@@ -75,7 +97,7 @@ body{
   margin-bottom:16px;
 }
 
-/* TAGIHAN */
+/* ===== TAGIHAN ===== */
 .tagihan{
   background:linear-gradient(#fffdf4,#fff8e6);
   border:1px solid #fde68a;
@@ -90,10 +112,11 @@ body{
   font-weight:700;
   font-size:14px;
 }
+.tagihan .label i{color:#f59e0b}
 .tagihan .amount{
   font-size:30px;
   font-weight:800;
-  margin:10px 0;
+  margin:10px 0 6px;
   letter-spacing:.3px;
 }
 .tagihan .due{
@@ -103,7 +126,7 @@ body{
 .btn{
   display:block;
   width:100%;
-  margin-top:16px;
+  margin-top:14px;
   padding:14px;
   text-align:center;
   border-radius:14px;
@@ -116,30 +139,13 @@ body{
 .link{
   display:block;
   text-align:center;
-  margin-top:12px;
+  margin-top:10px;
   font-size:14px;
   color:var(--green-dark);
   text-decoration:none;
 }
 
-/* INFO */
-.info .row{
-  display:flex;
-  justify-content:space-between;
-  padding:10px 0;
-  border-bottom:1px solid #e5e7eb;
-  font-size:14px;
-}
-.info .row span{
-  color:var(--muted);
-  font-size:13px;
-}
-.info .row strong{
-  font-weight:700;
-}
-.info .row:last-child{border-bottom:none}
-
-/* MENU GRID */
+/* ===== MENU GRID ===== */
 .grid{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -164,8 +170,13 @@ body{
   margin-top:10px;
   font-size:14px;
 }
-.menu.full{
-  grid-column:1 / -1;
+.menu:active{
+  transform:translateY(1px);
+}
+
+/* ===== FOOTER SAFE SPACE ===== */
+.safe{
+  height:16px;
 }
 </style>
 </head>
@@ -173,45 +184,43 @@ body{
 <body>
 
 <!-- HEADER -->
-<div class="header">
-  <div class="app">
-    <i class="fa-solid fa-book-open"></i>
-    EduPay
+<header class="header">
+  <div class="header-top">
+    <div class="brand">
+      <i class="fa-solid fa-book-open"></i>
+      EduPay
+    </div>
+    <a href="#" title="Profil Siswa">
+      <img class="avatar" src="https://i.pravatar.cc/80?img=12" alt="Profil Siswa">
+    </a>
   </div>
-  <h1>Assalamualaikum<br><strong>Kayyis Nabil Atqiya</strong></h1>
-  <p>Kelas 9 – PONPES</p>
-</div>
 
-<div class="container">
+  <div class="greet">
+    <small>Assalamualaikum</small>
+    <h1>Kayyis Nabil Atqiya</h1>
+    <p>Kelas 9 – PONPES</p>
+  </div>
+</header>
 
-  <!-- TAGIHAN -->
-  <div class="card tagihan">
+<!-- CONTENT -->
+<main class="container">
+
+  <!-- TAGIHAN AKTIF -->
+  <section class="card tagihan">
     <div class="label">
-      <i class="fa-solid fa-circle text-warning"></i>
+      <i class="fa-solid fa-circle"></i>
       TAGIHAN AKTIF
     </div>
     <div class="amount">Rp 1.250.000</div>
     <div class="due">Jatuh Tempo: 20 Januari 2026</div>
     <a href="#" class="btn">
-      <i class="fa-solid fa-credit-card"></i> BAYAR SEKARANG
+      <i class="fa-solid fa-credit-card"></i> Bayar Sekarang
     </a>
     <a href="#" class="link">Lihat rincian tagihan →</a>
-  </div>
+  </section>
 
-  <!-- INFO SISWA -->
-  <div class="card info">
-    <div class="row">
-      <span>NIS</span>
-      <strong>23141017</strong>
-    </div>
-    <div class="row">
-      <span>Unit</span>
-      <strong>Pondok Pesantren</strong>
-    </div>
-  </div>
-
-  <!-- MENU -->
-  <div class="grid">
+  <!-- MENU UTAMA -->
+  <section class="grid">
     <a class="menu" href="#">
       <i class="fa-solid fa-wallet"></i>
       <span>Tagihan</span>
@@ -225,16 +234,13 @@ body{
       <span>Histori Transaksi</span>
     </a>
     <a class="menu" href="#">
-      <i class="fa-solid fa-user-graduate"></i>
-      <span>Profil Siswa</span>
+      <i class="fa-solid fa-circle-info"></i>
+      <span>Cara Pembayaran</span>
     </a>
-    <a class="menu full" href="#">
-      <i class="fa-solid fa-ellipsis"></i>
-      <span>Lainnya</span>
-    </a>
-  </div>
+  </section>
 
-</div>
+  <div class="safe"></div>
+</main>
 
 </body>
 </html>
