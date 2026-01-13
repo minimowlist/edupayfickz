@@ -396,22 +396,29 @@ function loadYoutube(el){
 </div>
 
   <div class="method">
-    <div class="method-header">
-      <strong>🏧 ATM</strong>
-      <button class="btn-video" onclick="toggleVideo('v-atm')">🎥 Video</button>
-    </div>
-    <ol class="steps">
-      <li>Pilih menu Pembayaran / Virtual Account</li>
-      <li>Masukkan nomor pembayaran</li>
-      <li>Konfirmasi transaksi</li>
-    </ol>
-    <div class="estimate">⏱ Estimasi waktu: ±2 menit</div>
-    <div id="v-atm" class="video-box">
-      <div class="yt-thumb" data-video="VIDEO_ID_BRIMO"
-       onclick="loadYoutube(this)">
-    ▶️ Tonton Video Panduan
+
+  <div class="method-header">
+    <strong>🏧 ATM</strong>
+    <button class="btn-video" onclick="toggleVideo('v-atm')">🎥 Video</button>
+  </div>
+
+  <ol class="steps">
+    <li>Pilih menu Pembayaran / Virtual Account</li>
+    <li>Masukkan nomor pembayaran</li>
+    <li>Konfirmasi transaksi</li>
+  </ol>
+
+  <div class="estimate">⏱ Estimasi waktu: ±2 menit</div>
+
+  <div id="v-atm" class="video-box">
+    <div class="yt-thumb"
+         data-video="VIDEO_ID_ATM"
+         onclick="loadYoutube(this)">
+      ▶️ Tonton Video Panduan
     </div>
   </div>
+
+</div>
 
   <!-- BANK LAIN -->
 <div class="card">
@@ -431,25 +438,35 @@ function loadYoutube(el){
   <div class="accordion">
 
     <!-- Bank Jateng -->
-    <button class="acc-btn" onclick="toggleAcc('jateng')">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" class="bank-icon">
-      Bank Jateng
-    </button>
-    <div id="jateng" class="acc-panel">
-      <ol class="steps">
-        <li>Buka <b>BCA Mobile</b> atau <b>Bima</b></li>
-        <li>Pilih menu <b>Pembayaran / Virtual Account</b></li>
-        <li>Masukkan Nomor Pembayaran</li>
-        <li>Konfirmasi transaksi</li>
-      </ol>
-      <div class="estimate">⏱ ±1 menit</div>
-      <button class="btn-video" onclick="toggleVideo('vid-bca')">🎥 Lihat Video Panduan</button>
-      <div id="vid-jateng" class="video-box">
-        <div class="yt-thumb" data-video="VIDEO_ID_BRIMO"
-       onclick="loadYoutube(this)">
-    ▶️ Tonton Video Panduan
-      </div>
+<button class="acc-btn" onclick="toggleAcc('jateng')">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/Bank_Jateng_logo.svg"
+       class="bank-icon">
+  Bank Jateng
+</button>
+
+<div id="jateng" class="acc-panel">
+  <ol class="steps">
+    <li>Buka aplikasi <b>BIMA Mobile</b> Bank Jateng</li>
+    <li>Pilih menu <b>Pembayaran / Virtual Account</b></li>
+    <li>Masukkan Nomor Pembayaran</li>
+    <li>Periksa data, lalu konfirmasi</li>
+  </ol>
+
+  <div class="estimate">⏱ ±1–2 menit</div>
+
+  <button class="btn-video" onclick="toggleVideo('vid-jateng')">
+    🎥 Lihat Video Panduan
+  </button>
+
+  <div id="vid-jateng" class="video-box">
+    <div class="yt-thumb"
+         data-video="VIDEO_ID_JATENG"
+         onclick="loadYoutube(this)">
+      ▶️ Tonton Video Panduan
     </div>
+  </div>
+</div>
+
     
     <!-- BCA -->
     <button class="acc-btn" onclick="toggleAcc('bca')">
