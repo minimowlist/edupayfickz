@@ -1,410 +1,580 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Bina Insan Kamil Edupayment - Home</title>
-<link rel="icon" type="image/png" sizes="32x32" href="logo-edupay.png">
-<link rel="apple-touch-icon" href="logo-edupay.png">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pembayaran SPP</title>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
 
+  
 <style>
-:root{
-  --green:#1e9e6a;
-  --green-dark:#158a5a;
-  --bg:#f6f8f7;
-  --card:#ffffff;
-  --yellow:#fff8e6;
-  --text:#1f2937;
-  --muted:#6b7280;
-  --line:#e5e7eb;
-}
-
-*{box-sizing:border-box}
 body{
+  font-family: system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+  background:#f5f7fa;
   margin:0;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-}
-
-/* ===== HEADER ===== */
-.header{
-  background:linear-gradient(135deg,#1e9e6a,#38b78a);
-  color:#fff;
-  padding:calc(14px + env(safe-area-inset-top)) 16px 22px;
-  border-bottom-left-radius:22px;
-  border-bottom-right-radius:22px;
-}
-.header-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-.brand{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-weight:700;
-  flex-shrink:0;   /* ⬅️ PENTING */
-}
-.avatar{
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  border:2px solid rgba(255,255,255,.8);
-  flex-shrink:0;   /* ⬅️ WAJIB */
-}
-.greet{
-  margin-top:10px;
-}
-.greet small{font-size:13px;opacity:.9}
-.greet h1{font-size:17px;margin:2px 0 4px}
-.greet p{margin:0;font-size:13px;opacity:.9}
-
-/* ===== CONTAINER ===== */
-.container{
   padding:16px;
+  color:#111;
+}
+.container{
   max-width:480px;
   margin:auto;
 }
-
-/* ===== CARD ===== */
+h2{
+  text-align:center;
+  margin:8px 0 16px;
+}
+h3{
+  margin:0 0 8px;
+  font-size:16px;
+}
 .card{
-  background:var(--card);
-  border-radius:18px;
+  background:#fff;
+  border-radius:12px;
   padding:16px;
-  box-shadow:0 6px 18px rgba(0,0,0,.06);
   margin-bottom:16px;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
 }
-/* ===== SIMPLE ROW (RINGKASAN & HISTORI) ===== */
-.simple-row{
-  background:#ffffff;
-  border-radius:14px;
-  padding:14px 16px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:12px;
-  box-shadow:0 4px 12px rgba(0,0,0,.05);
-  text-decoration:none;
-  color:var(--text);
+.va{
+  font-size:22px;
+  font-weight:bold;
+  text-align:center;
+  letter-spacing:1px;
+  margin:10px 0;
+}
+.amount{
+  font-size:18px;
+  font-weight:bold;
+  text-align:center;
+}
+button{
+  width:100%;
+  padding:12px;
+  border-radius:8px;
+  border:none;
+  cursor:pointer;
+  font-size:15px;
+}
+.btn-copy{
+  background:#2563eb;
+  color:#fff;
+  margin-top:8px;
+  transition:background 0.2s ease;
 }
 
-.simple-row .left{
+.btn-copy i{
+  margin-right:6px;
+  transition:transform 0.2s ease;
+}
+
+.btn-copy.copied{
+  background:#16a34a; /* hijau sukses */
+}
+
+.btn-copy.copied i{
+  transform:scale(1.15);
+}
+
+.btn-video{
+  width:auto;
+  padding:6px 10px;
+  font-size:13px;
+}
+.btn-wa{
+  background:#16a34a;
+  color:#fff;
+  font-size:16px;
+  font-weight:bold;
+}
+.note{
+  font-size:12px;
+  color:#555;
+  margin-top:6px;
+  text-align:center;
+}
+.method{
+  margin-top:14px;
+  padding-top:14px;
+  border-top:1px solid #eee;
+}
+.method-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.steps{
+  font-size:13px;
+  color:#444;
+  padding-left:18px;
+  margin:6px 0;
+}
+.estimate{
+  font-size:12px;
+  color:#666;
+}
+.video-box{
+  display:none;
+  margin-top:8px;
+}
+iframe{
+  width:100%;
+  height:220px;
+  border-radius:8px;
+}
+
+.bank-summary{
+  font-size:13px;
+  color:#444;
+  margin-bottom:12px;
+}
+.accordion{margin-top:8px;}
+.acc-btn{
+  width:100%;
   display:flex;
   align-items:center;
   gap:10px;
+  padding:10px;
+  border:none;
+  border-radius:8px;
+  background:#f1f5f9;
+  margin-top:6px;
+  cursor:pointer;
+  font-size:14px;
   font-weight:600;
-  font-size:14px;
 }
-
-.simple-row i{
-  color:var(--green-dark);
-  font-size:16px;
+.bank-icon{
+  width:28px;
+  height:auto;
 }
-
-.simple-row .chevron{
-  color:#9ca3af;
-  font-size:14px;
+.bank-label{
+  display:flex;
+  align-items:center;
+  gap:8px;
 }
-
-/* ===== TAGIHAN ===== */
-.tagihan{
-  background:linear-gradient(#fffdf4,#fff8e6);
-  border:1px solid #fde68a;
+.acc-panel{
+  display:none;
+  padding:8px 12px 10px;
+  border-left:2px solid #e5e7eb;
+  margin-left:10px;
 }
-.amount{
-  font-size:30px;
-  font-weight:800;
+.steps{
+  font-size:13px;
+  color:#444;
+  padding-left:18px;
   margin:6px 0;
 }
-.muted{color:var(--muted);font-size:14px}
-.btn{
-  display:block;
-  width:100%;
-  margin-top:14px;
-  padding:14px;
-  text-align:center;
-  border-radius:14px;
-  background:linear-gradient(135deg,var(--green),var(--green-dark));
-  color:#fff;
-  font-weight:800;
-  text-decoration:none;
-}
-.link{
-  display:block;
-  text-align:center;
-  margin-top:10px;
-  font-size:14px;
-  color:var(--green-dark);
-  text-decoration:none;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-weight:700;
-}
-
-.brand-logo{
-  width:22px;
-  height:22px;
-  max-width:22px;
-  max-height:22px;
-  object-fit:contain;
-}
-/* ===== SUMMARY ===== */
-.summary .row{
-  display:flex;
-  justify-content:space-between;
-  padding:10px 0;             /* sebelumnya 8px */
-  border-bottom:1px solid var(--line);
-  font-size:14px;
-}
-.summary .row:last-child{border-bottom:none}
-
-/* ===== HISTORY ===== */
-.history-item{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:12px 0;             /* sebelumnya 10px */
-  border-bottom:1px solid var(--line);
-  font-size:14px;
-}
-.history-item:last-child{border-bottom:none}
-.history-left{
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-.history-left i{color:var(--green)}
-
-/* ===== MENU ===== */
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-}
-.menu{
-  background:#fff;
-  border-radius:18px;
-  padding:20px 10px;
-  text-align:center;
-  box-shadow:0 4px 14px rgba(0,0,0,.06);
-  text-decoration:none;
-  color:var(--text);
-  font-weight:700;
-}
-.menu i{
-  font-size:22px;
-  color:var(--green-dark);
-}
-.menu span{
-  display:block;
-  margin-top:10px;
-  font-size:14px;
-}
-
-/* ===== MINI TOGGLE (COMPACT MODE) ===== */
-.mini-toggle{
-  background:#ffffff;
-  border-radius:12px;
-  padding:10px 12px;          /* LEBIH RINGKAS */
-  margin-bottom:10px;
-  box-shadow:0 2px 8px rgba(0,0,0,.04);
-}
-
-.mini-toggle-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  cursor:pointer;
-}
-
-.mini-toggle-title{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-weight:500;            /* TURUN dari 600 */
-  font-size:13.5px;           /* LEBIH KECIL */
-}
-
-.mini-toggle-title i{
-  font-size:14px;
-  color:var(--green-dark);
-}
-
-.mini-chevron{
+.estimate{
   font-size:12px;
-  color:#9ca3af;
-  transition:transform .25s ease;
+  color:#666;
+  margin-bottom:6px;
+}
+.btn-video{
+  background:#e5e7eb;
+  border:none;
+  padding:6px 10px;
+  border-radius:6px;
+  cursor:pointer;
+  font-size:12px;
+}
+.video-box{
+  display:none;
+  margin-top:8px;
+}
+.video-box iframe{
+  width:100%;
+  height:220px;
+  border-radius:8px;
 }
 
-.mini-toggle.collapsed .mini-chevron{
-  transform:rotate(-90deg);
+.amount{
+  line-height:1.2;
+}
+  
+  .amount-row{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
 }
 
-.mini-toggle-content{
-  overflow:hidden;
-  height:0;
-  transition:height .28s cubic-bezier(.4,0,.2,1);
-  margin-top:6px;             /* RENGGANG DIKIT */
+.btn-copy-inline{
+  width:auto;
+  padding:4px 6px;
+  border:none;
+  background:#e5e7eb;
+  border-radius:6px;
+  cursor:pointer;
+  line-height:1;
+  flex-shrink:0;
+  transition:background 0.2s ease;
+}
+
+.btn-copy-inline i{
+  font-size:13px;
+  color:#111;
+  transition:transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* state sukses */
+.btn-copy-inline.copied{
+  background:#dcfce7; /* hijau lembut */
+}
+
+.btn-copy-inline.copied i{
+  color:#16a34a;
+  transform:scale(1.15);
+}
+.yt-thumb{
+  height:220px;
+  background:#000;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:14px;
+  text-align:center;
 }
 </style>
-</head>
-
-<body>
-
-<header class="header">
-  <div class="header-top">
-    <div class="brand">
-      <img
-        src="https://blogger.googleusercontent.com/img/a/AVvXsEjnCgerqhvorVStdAEsS7qsSLjKQ2Eo0uLpcYVrX78kEYQRDBalMft4PC8dJ4Tfs80faG7pEGfj_Wpm6s107ZOLmuvSWCShHYl84Odlvudd7nzuZ_1QHZI1fjpTd2YYP97pnS_ZuTfhfxldWzmjj5QPVUHqlz1OCIs02Zv_TCOD5pcA-p2AeYKdxywj1bc"
-        alt="Bina Insan Kamil Edupayment"
-        class="brand-logo"
-      >
-      <span>Bina Insan Kamil</span>
-    </div>
-
-    <img class="avatar" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgIGdNQ9DbMeQVvqL3yaGx0vQ2uSHnWVVVylTId5_SjpsBWOpZ73UYMkw&s=10">
-  </div>
-
-  <div class="greet">
-    <small>Assalamualaikum</small>
-    <h1>Kayyis Nabil Atqiya</h1>
-    <p>Kelas 9 – PONPES</p>
-  </div>
-</header>
-
-<main class="container">
-
-  <!-- TAGIHAN AKTIF -->
-  <section class="card tagihan">
-    <div style="font-weight:700;font-size:14px;margin-bottom:6px">
-      🟡 TAGIHAN AKTIF
-    </div>
-    <div class="amount">Rp 1.250.000</div>
-    <div class="muted">Jatuh Tempo: 20 Januari 2026</div>
-    <a href="#" class="btn">
-      <i class="fa-solid fa-credit-card"></i> Bayar Sekarang
-    </a>
-    <a href="#" class="link">Lihat rincian tagihan →</a>
-  </section>
-
-<!-- TOGGLE MENU -->
-<div class="mini-toggle collapsed" id="ringkasanToggle">
-  <div class="mini-toggle-header" onclick="toggleMini('ringkasanToggle')">
-    <div class="mini-toggle-title">
-      <i class="fa-solid fa-chart-pie"></i>
-      Ringkasan Tahun Ajaran 2025/2026
-    </div>
-    <i class="fa-solid fa-chevron-down mini-chevron"></i>
-  </div>
-
-  <div class="mini-toggle-content">
-    <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:13px">
-      <span>Total Dibayar</span>
-      <strong>Rp 3.750.000</strong>
-    </div>
-    <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:13px">
-      <span>Sisa Tahun Ini</span>
-      <strong>Rp 1.250.000</strong>
-    </div>
-  </div>
-</div>
-
-<div class="mini-toggle collapsed" id="historiToggle">
-  <div class="mini-toggle-header" onclick="toggleMini('historiToggle')">
-    <div class="mini-toggle-title">
-      <i class="fa-solid fa-clock-rotate-left"></i>
-      Histori Terakhir
-    </div>
-    <i class="fa-solid fa-chevron-down mini-chevron"></i>
-  </div>
-
-  <div class="mini-toggle-content">
-    <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:13px">
-      <span>
-        <i class="fa-solid fa-check-circle" style="color:#22c55e;margin-right:6px"></i>
-        SPP Januari 2026
-      </span>
-      <strong>Rp 500.000</strong>
-    </div>
-
-    <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:13px">
-      <span>
-        <i class="fa-solid fa-check-circle" style="color:#22c55e;margin-right:6px"></i>
-        SPP Desember 2025
-      </span>
-      <strong>Rp 500.000</strong>
-    </div>
-
-    <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:13px">
-      <span>
-        <i class="fa-solid fa-check-circle" style="color:#22c55e;margin-right:6px"></i>
-        Uang Kegiatan
-      </span>
-      <strong>Rp 250.000</strong>
-    </div>
-  </div>
-</div>
-
-  <!-- MENU -->
-  <section class="grid">
-    <a class="menu" href="#">
-      <i class="fa-solid fa-wallet"></i>
-      <span>Tagihan</span>
-    </a>
-    <a class="menu" href="#">
-      <i class="fa-solid fa-file-signature"></i>
-      <span>Kesanggupan Biaya</span>
-    </a>
-    <a class="menu" href="#">
-      <i class="fa-solid fa-clock-rotate-left"></i>
-      <span>Histori Transaksi</span>
-    </a>
-    <a class="menu" href="#">
-      <i class="fa-solid fa-circle-info"></i>
-      <span>Cara Pembayaran</span>
-    </a>
-  </section>
-
-</main>
 
 <script>
-function toggleMini(id){
-  const box = document.getElementById(id);
-  const content = box.querySelector('.mini-toggle-content');
-  const isCollapsed = box.classList.contains('collapsed');
+function copyVA(btn){
+  const va = "800008080024066";
+  navigator.clipboard.writeText(va);
 
-  if(isCollapsed){
-    box.classList.remove('collapsed');
-    content.style.height = content.scrollHeight + 'px';
+  const icon = btn.querySelector('i');
+  const originalClass = icon.className;
+  const originalText = btn.innerHTML;
 
-    content.addEventListener('transitionend', function openHandler(e){
-      if(e.propertyName !== 'height') return;
-      content.style.height = 'auto';
-      content.removeEventListener('transitionend', openHandler);
-    });
+  // ubah ke state sukses
+  icon.className = "fa-solid fa-check";
+  btn.classList.add('copied');
 
-  }else{
-    content.style.height = content.scrollHeight + 'px';
+  // balik ke normal
+  setTimeout(() => {
+    icon.className = originalClass;
+    btn.classList.remove('copied');
+  }, 1200);
+}
 
-    requestAnimationFrame(() => {
-      content.style.height = '0px';
-    });
+function toggleAcc(id){
+  document.querySelectorAll('.acc-panel').forEach(p=>{
+    if(p.id !== id) p.style.display = 'none';
+  });
+  const el = document.getElementById(id);
+  el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+}
 
-    content.addEventListener('transitionend', function closeHandler(e){
-      if(e.propertyName !== 'height') return;
-      box.classList.add('collapsed');
-      content.removeEventListener('transitionend', closeHandler);
-    });
-  }
+function toggleVideo(id){
+  document.querySelectorAll('.video-box').forEach(v=>{
+    if(v.id !== id) v.style.display = 'none';
+  });
+  const el = document.getElementById(id);
+  el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+}
+function copyNominal(btn){
+  const nominal = "550000"; // angka bersih
+  navigator.clipboard.writeText(nominal);
+
+  const icon = btn.querySelector('i');
+
+  // simpan ikon awal
+  const originalClass = icon.className;
+
+  // ubah ke state sukses
+  icon.className = "fa-solid fa-check";
+  btn.classList.add('copied');
+
+  // balik ke semula setelah 1.2 detik
+  setTimeout(() => {
+    icon.className = originalClass;
+    btn.classList.remove('copied');
+  }, 1200);
+}
+function loadYoutube(el){
+  const id = el.dataset.video;
+  el.innerHTML = `
+    <iframe
+      src="https://www.youtube.com/embed/${id}?autoplay=1"
+      allowfullscreen
+      style="width:100%;height:220px;border-radius:8px;">
+    </iframe>
+  `;
 }
 </script>
 
+</head>
+
+<body>
+<div class="container">
+
+<h2>Pembayaran SPP</h2>
+
+<!-- NOMOR PEMBAYARAN -->
+<div class="card">
+  <h3>Nomor Pembayaran (Virtual Account)</h3>
+  <div class="va">80000 808 0024066</div>
+  <button
+  class="btn-copy"
+  onclick="copyVA(this)"
+  title="Salin Nomor Pembayaran"
+>
+  <i class="fa-solid fa-copy"></i> Salin Nomor
+</button>
+  <div class="note">
+    Gunakan nomor ini pada menu <b>Virtual Account / Pembayaran</b>  
+    di aplikasi bank Anda
+  </div>
+</div>
+
+<!-- NOMINAL -->
+<div class="card">
+  <h3>Nominal yang Dibayarkan</h3>
+
+  <div class="amount-row">
+    <div class="amount" id="nominal-text">Rp 550.000</div>
+    <button
+  class="btn-copy-inline"
+  onclick="copyNominal(this)"
+  title="Salin Nominal"
+>
+  <i class="fa-solid fa-copy"></i>
+</button>
+  </div>
+
+  <div class="note">
+    Nominal disalin tanpa tanda Rp dan titik
+  </div>
+</div>
+
+
+
+<!-- CARA PEMBAYARAN -->
+<div class="card">
+  <h3>Cara Pembayaran</h3>
+
+ <div class="method">
+
+  <div class="method-header">
+    <div class="bank-label">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Logo_BRI.png/1280px-Logo_BRI.png"
+        alt="BRI"
+        class="bank-icon"
+      >
+      <strong>BRI Mobile / Internet Banking</strong>
+    </div>
+
+    <button class="btn-video" onclick="toggleVideo('v-brimo')">
+      🎥 Video
+    </button>
+  </div>
+
+  <ol class="steps">
+    <li>Buka aplikasi <b>BRI Mobile</b></li>
+    <li>Pilih menu <b>BRIVA / Virtual Account</b></li>
+    <li>Masukkan <b>Nomor Pembayaran</b></li>
+    <li>Periksa nama dan nominal, lalu konfirmasi</li>
+  </ol>
+
+  <div class="estimate">⏱ Estimasi waktu: ±1 menit</div>
+
+  <div id="v-brimo" class="video-box">
+    <div class="yt-thumb"
+         data-video="VIDEO_ID_BRIMO"
+         onclick="loadYoutube(this)">
+      ▶️ Tonton Video Panduan
+    </div>
+  </div>
+
+</div>
+
+  <div class="method">
+
+  <div class="method-header">
+    <strong>🏧 ATM</strong>
+    <button class="btn-video" onclick="toggleVideo('v-atm')">🎥 Video</button>
+  </div>
+
+  <ol class="steps">
+    <li>Pilih menu Pembayaran / Virtual Account</li>
+    <li>Masukkan nomor pembayaran</li>
+    <li>Konfirmasi transaksi</li>
+  </ol>
+
+  <div class="estimate">⏱ Estimasi waktu: ±2 menit</div>
+
+  <div id="v-atm" class="video-box">
+    <div class="yt-thumb"
+         data-video="VIDEO_ID_ATM"
+         onclick="loadYoutube(this)">
+      ▶️ Tonton Video Panduan
+    </div>
+  </div>
+
+</div>
+
+  <!-- BANK LAIN -->
+<div class="card">
+  <h3>🏦 Pembayaran melalui Bank Lain</h3>
+
+  <!-- Ringkasan Umum -->
+  <div class="bank-summary">
+    <strong>Alur Umum Pembayaran:</strong><br>
+    1) Buka aplikasi mobile banking / internet banking bank Anda<br>
+    2) Pilih menu <b>Pembayaran</b> atau <b>Virtual Account</b><br>
+    3) Masukkan <b>Nomor Pembayaran</b><br>
+    4) Periksa informasi, lalu konfirmasi transaksi<br>
+    <span class="estimate">⏱ Estimasi waktu: ±1–2 menit</span>
+  </div>
+
+  <!-- Accordion -->
+  <div class="accordion">
+
+    <!-- Bank Jateng -->
+<button class="acc-btn" onclick="toggleAcc('jateng')">
+  <img src="https://upload.wikimedia.org/wikipedia/id/thumb/c/c4/Bank_Jateng_logo.svg/500px-Bank_Jateng_logo.svg.png"
+       class="bank-icon">
+  Bank Jateng
+</button>
+
+<div id="jateng" class="acc-panel">
+  <ol class="steps">
+    <li>Buka aplikasi <b>BIMA Mobile</b> Bank Jateng</li>
+    <li>Pilih menu <b>Pembayaran / Virtual Account</b></li>
+    <li>Masukkan Nomor Pembayaran</li>
+    <li>Periksa data, lalu konfirmasi</li>
+  </ol>
+
+  <div class="estimate">⏱ ±1–2 menit</div>
+
+  <button class="btn-video" onclick="toggleVideo('vid-jateng')">
+    🎥 Lihat Video Panduan
+  </button>
+
+  <div id="vid-jateng" class="video-box">
+    <div class="yt-thumb"
+         data-video="VIDEO_ID_JATENG"
+         onclick="loadYoutube(this)">
+      ▶️ Tonton Video Panduan
+    </div>
+  </div>
+</div>
+
+  <!-- Accordion -->
+  <div class="accordion">
+<!-- BCA -->
+    <button class="acc-btn" onclick="toggleAcc('bca')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" class="bank-icon">
+      Bank Central Asia (BCA)
+    </button>
+    <div id="bca" class="acc-panel">
+      <ol class="steps">
+        <li>Buka <b>BCA Mobile</b> atau <b>KlikBCA</b></li>
+        <li>Pilih menu <b>Pembayaran / Virtual Account</b></li>
+        <li>Masukkan Nomor Pembayaran</li>
+        <li>Konfirmasi transaksi</li>
+      </ol>
+      <div class="estimate">⏱ ±1 menit</div>
+      <button class="btn-video" onclick="toggleVideo('vid-bca')">🎥 Lihat Video Panduan</button>
+      <div id="vid-bca" class="video-box">
+        <div class="yt-thumb" data-video="VIDEO_ID_BRIMO"
+       onclick="loadYoutube(this)">
+    ▶️ Tonton Video Panduan
+      </div>
+    </div>
+  </div>
+
+<!-- Accordion -->
+  <div class="accordion">
+      
+    <!-- BNI -->
+    <button class="acc-btn" onclick="toggleAcc('bni')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Bank_Negara_Indonesia_logo_%282004%29.svg" class="bank-icon">
+      Bank Negara Indonesia (BNI)
+    </button>
+    <div id="bni" class="acc-panel">
+      <ol class="steps">
+        <li>Buka <b>BNI Mobile Banking / Wondr by BNI</b></li>
+        <li>Pilih menu <b>Pembayaran / Virtual Account</b></li>
+        <li>Masukkan Nomor Pembayaran</li>
+        <li>Konfirmasi transaksi</li>
+      </ol>
+      <div class="estimate">⏱ ±1 menit</div>
+      <button class="btn-video" onclick="toggleVideo('vid-bni')">🎥 Lihat Video Panduan</button>
+      <div id="vid-bni" class="video-box">
+        <div class="yt-thumb" data-video="VIDEO_ID_BRIMO"
+       onclick="loadYoutube(this)">
+    ▶️ Tonton Video Panduan
+      </div>
+    </div>
+  </div>
+<!-- Accordion -->
+  <div class="accordion">
+    <!-- BSI -->
+    <button class="acc-btn" onclick="toggleAcc('bsi')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Bank_Syariah_Indonesia.svg" class="bank-icon">
+      Bank Syariah Indonesia (BSI)
+    </button>
+    <div id="bsi" class="acc-panel">
+      <ol class="steps">
+        <li>Buka <b>BSI Mobile / BYOND BSI</b></li>
+        <li>Pilih menu <b>Pembayaran / Virtual Account</b></li>
+        <li>Masukkan Nomor Pembayaran</li>
+        <li>Konfirmasi transaksi</li>
+      </ol>
+      <div class="estimate">⏱ ±1–2 menit</div>
+      <button class="btn-video" onclick="toggleVideo('vid-bsi')">🎥 Lihat Video Panduan</button>
+      <div id="vid-bsi" class="video-box">
+        <div class="yt-thumb" data-video="VIDEO_ID_BRIMO"
+       onclick="loadYoutube(this)">
+    ▶️ Tonton Video Panduan
+      </div>
+    </div>
+  </div>
+
+<!-- Accordion -->
+  <div class="accordion">
+    <!-- Mandiri -->
+    <button class="acc-btn" onclick="toggleAcc('mandiri')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Bank_Mandiri_logo_2016.svg" class="bank-icon">
+      Bank Mandiri
+    </button>
+    <div id="mandiri" class="acc-panel">
+      <ol class="steps">
+        <li>Buka aplikasi <b>Livin’ by Mandiri</b></li>
+        <li>Pilih menu <b>Pembayaran / Virtual Account</b></li>
+        <li>Masukkan Nomor Pembayaran</li>
+        <li>Konfirmasi transaksi</li>
+      </ol>
+      <div class="estimate">⏱ ±1 menit</div>
+      <button class="btn-video" onclick="toggleVideo('vid-mandiri')">🎥 Lihat Video Panduan</button>
+      <div id="vid-mandiri" class="video-box">
+        <div class="yt-thumb" data-video="VIDEO_ID_BRIMO"
+       onclick="loadYoutube(this)">
+    ▶️ Tonton Video Panduan
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+
+<!-- KONFIRMASI / BANTUAN -->
+<!-- <div class="card">
+  <a href="https://wa.me/62812XXXXXXX?text=Assalamu%E2%80%99alaikum%2C%20saya%20ingin%20konfirmasi%20pembayaran%20SPP.%20Terima%20kasih."
+     target="_blank" style="text-decoration:none;">
+    <button class="btn-wa">Butuh Bantuan? Hubungi Bendahara</button> -->
+  </a>
+  <div class="note">Pembayaran online lebih cepat dan tidak perlu datang ke sekolah</div>
+</div>
+
+</div>
 </body>
 </html>
