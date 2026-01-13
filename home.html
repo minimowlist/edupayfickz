@@ -191,6 +191,10 @@ body{
   margin-top:10px;
   font-size:14px;
 }
+.card.collapsed .toggle-content{
+  height:0 !important;
+  overflow:hidden;
+}
 </style>
 </head>
 
@@ -313,7 +317,6 @@ function toggleCard(id){
     // EXPAND
     card.classList.remove('collapsed');
     content.style.height = '0px';
-    content.classList.add('is-expanding');
 
     requestAnimationFrame(() => {
       content.style.height = content.scrollHeight + 'px';
@@ -321,14 +324,12 @@ function toggleCard(id){
 
     content.addEventListener('transitionend', function handler(){
       content.style.height = 'auto';
-      content.classList.remove('is-expanding');
       content.removeEventListener('transitionend', handler);
     });
 
   }else{
     // COLLAPSE
     content.style.height = content.scrollHeight + 'px';
-    content.classList.add('is-collapsing');
 
     requestAnimationFrame(() => {
       content.style.height = '0px';
@@ -336,7 +337,6 @@ function toggleCard(id){
 
     content.addEventListener('transitionend', function handler(){
       card.classList.add('collapsed');
-      content.classList.remove('is-collapsing');
       content.removeEventListener('transitionend', handler);
     });
   }
