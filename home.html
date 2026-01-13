@@ -1,320 +1,196 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EduPay – Dashboard</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>EduPay – Home</title>
 
 <style>
 :root{
-  --green:#0f766e;
-  --green2:#16a34a;
-  --green-soft:#e6f4f1;
-  --yellow:#fde68a;
-  --bg:#f4f6f7;
+  --green:#1e9e6a;
+  --green-dark:#158a5a;
+  --bg:#f4f6f5;
   --card:#ffffff;
+  --yellow:#fff3cd;
   --text:#1f2937;
+  --muted:#6b7280;
 }
 
-*{box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,sans-serif}
-body{margin:0;background:var(--bg);color:var(--text);}
-
-/* ================= APP LAYOUT ================= */
-.app{min-height:100vh}
-
-/* ================= HEADER (MOBILE DEFAULT) ================= */
-.header{
-  background:linear-gradient(160deg,var(--green2),var(--green));
-  padding:20px 16px 36px;
-  color:#fff;
-  position:relative;
-  overflow:hidden;
-}
-.header::after{
-  content:"";
-  position:absolute;
-  left:0;bottom:-1px;
-  width:100%;height:42px;
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
   background:var(--bg);
-  height:48px;
-  border-radius:40px 40px 0 0;
+  color:var(--text);
 }
 
-/* wave accent */
-.header::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(120% 80% at 100% 100%, rgba(255,255,255,.25), transparent 60%),
-    radial-gradient(120% 80% at 0% 100%, rgba(255,255,255,.18), transparent 60%);
+/* HEADER */
+.header{
+  background:linear-gradient(135deg,#1e9e6a,#38b78a);
+  color:#fff;
+  padding:18px 16px 24px;
+  border-bottom-left-radius:20px;
+  border-bottom-right-radius:20px;
 }
-
-.header-top{
+.header .app{
+  font-weight:700;
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  position:relative;
+  gap:8px;
+  margin-bottom:12px;
 }
-.brand{font-weight:700;font-size:18px}
-.avatar{
-  width:36px;height:36px;
-  border-radius:50%;
-  background:#fff;
+.header h1{
+  font-size:18px;
+  margin:0;
+}
+.header p{
+  margin:4px 0 0;
+  font-size:14px;
+  opacity:.9;
 }
 
-.header-info{
-  position:relative;
-  margin-top:18px;
-}
-.header-info small{opacity:.9}
-.header-info h1{
-  margin:4px 0;
-  font-size:22px;
-  font-weight:800;
-}
-.header-info p{margin:0;opacity:.9}
-
-/* ================= CONTENT ================= */
+/* CONTAINER */
 .container{
-  padding:0 16px 24px;
-  margin-top:-20px;
+  padding:16px;
+  max-width:480px;
+  margin:auto;
 }
 
-/* ================= CARD BASE ================= */
+/* CARD */
 .card{
   background:var(--card);
-  border-radius:16px;
-  padding:18px;
-  box-shadow:0 10px 28px rgba(0,0,0,.08);
-}
-
-/* ================= BILL ================= */
-.bill{
-  background:linear-gradient(#fff,#fff6d6);
-}
-.bill-tag{
-  display:flex;align-items:center;gap:8px;
-  font-weight:700;margin-bottom:8px;
-}
-.dot{width:12px;height:12px;border-radius:50%;background:#facc15}
-.amount{font-size:28px;font-weight:800;margin:4px 0}
-
-.btn{
-  margin-top:14px;
-  width:100%;
+  border-radius:14px;
   padding:14px;
-  border:none;
-  border-radius:999px;
-  background:linear-gradient(#22c55e,#0f766e);
-  color:#fff;
+  box-shadow:0 4px 12px rgba(0,0,0,.05);
+  margin-bottom:16px;
+}
+
+/* TAGIHAN */
+.tagihan{
+  background:linear-gradient(#fffdf4,#fff7d6);
+  border:1px solid #fde68a;
+}
+.tagihan .label{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-weight:600;
+  font-size:14px;
+}
+.tagihan .amount{
+  font-size:28px;
   font-weight:800;
-  font-size:16px;
+  margin:8px 0;
+}
+.tagihan .due{
+  color:var(--muted);
+  font-size:14px;
+}
+.btn{
+  display:block;
+  width:100%;
+  margin-top:14px;
+  padding:14px;
+  text-align:center;
+  border-radius:12px;
+  background:linear-gradient(135deg,var(--green),var(--green-dark));
+  color:#fff;
+  font-weight:700;
+  text-decoration:none;
 }
 .link{
   display:block;
-  margin-top:8px;
   text-align:center;
-  color:var(--green);
+  margin-top:10px;
+  font-size:14px;
+  color:var(--green-dark);
   text-decoration:none;
-  font-weight:600;
 }
 
-/* ================= INFO ================= */
-.info-row{
-  display:flex;align-items:center;gap:10px;
-  padding:10px 0;
+/* INFO */
+.info{
+  font-size:14px;
+}
+.info .row{
+  display:flex;
+  justify-content:space-between;
+  padding:8px 0;
   border-bottom:1px solid #e5e7eb;
 }
-.info-row:last-child{border-bottom:none}
-.icon{
-  width:28px;height:28px;
-  border-radius:8px;
-  background:var(--green-soft);
-  display:flex;align-items:center;justify-content:center;
-  color:var(--green);
-  font-weight:700;
-}
+.info .row:last-child{border-bottom:none}
 
-/* ================= MENU GRID (MOBILE) ================= */
-.menu{
+/* MENU GRID */
+.grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:12px;
 }
-.menu-item{
+.menu{
   background:#fff;
   border-radius:14px;
-  padding:16px 12px;
+  padding:16px 10px;
   text-align:center;
-  box-shadow:0 4px 16px rgba(0,0,0,.06);
-  font-weight:700;
+  box-shadow:0 3px 10px rgba(0,0,0,.05);
+  text-decoration:none;
+  color:var(--text);
+  font-weight:600;
 }
-.menu-icon{
-  width:36px;height:36px;margin:auto;
-  border-radius:50%;
-  background:var(--green-soft);
-  display:flex;align-items:center;justify-content:center;
-  color:var(--green);
-  font-size:18px;
-}
-.menu-item span{display:block;margin-top:8px;font-size:14px}
-
-/* ================= SIDEBAR (DESKTOP ONLY) ================= */
-.sidebar{display:none}
-
-/* ================= DESKTOP ENHANCEMENT ================= */
-@media(min-width:1024px){
-
-  body{background:#eef2f3}
-
-  .app{
-    display:grid;
-    grid-template-columns:260px 1fr;
-    min-height:100vh;
-  }
-
-  .sidebar{
-    display:block;
-    background:#fff;
-    padding:24px 16px;
-    border-right:1px solid #e5e7eb;
-  }
-
-  .side-profile{text-align:center;margin-bottom:24px}
-  .side-profile .avatar{
-    width:64px;height:64px;margin:0 auto 8px;
-  }
-  .side-profile strong{display:block}
-
-  .side-menu{
-    display:block;
-    padding:10px 12px;
-    margin-bottom:6px;
-    border-radius:10px;
-    text-decoration:none;
-    color:#374151;
-    font-weight:600;
-  }
-  .side-menu.active{
-    background:var(--green-soft);
-    color:var(--green);
-  }
-
-  .header{border-radius:0 0 24px 24px}
-
-  .container{
-    max-width:1100px;
-    margin:auto;
-    padding:24px;
-  }
-
-  .desktop-grid{
-    display:grid;
-    grid-template-columns:1.2fr 1fr;
-    gap:24px;
-  }
-
-  /* menu mobile hilang */
-  .menu{display:none}
+.menu span{
+  display:block;
+  margin-top:6px;
+  font-size:14px;
 }
 </style>
 </head>
 
 <body>
-<div class="app">
-
-<!-- SIDEBAR DESKTOP -->
-<aside class="sidebar">
-  <div class="side-profile">
-    <div class="avatar"></div>
-    <strong>Kayyis Nabil Atqiya</strong>
-    <small>Kelas 9 – PONPES</small>
-  </div>
-
-  <a class="side-menu active">Dashboard</a>
-  <a class="side-menu">Tagihan</a>
-  <a class="side-menu">Kesanggupan Biaya</a>
-  <a class="side-menu">Histori Transaksi</a>
-  <a class="side-menu">Pengaturan Siswa</a>
-  <a class="side-menu">Cara Pembayaran</a>
-</aside>
-
-<!-- MAIN -->
-<div>
 
 <!-- HEADER -->
 <div class="header">
-  <div class="header-top">
-    <div class="brand">EduPay</div>
-    <div class="avatar"></div>
-  </div>
-
-  <div class="header-info">
-    <small>Assalamualaikum</small>
-    <h1>Kayyis Nabil Atqiya</h1>
-    <p>Kelas 9 – PONPES</p>
-  </div>
+  <div class="app">📘 EduPay</div>
+  <h1>Assalamualaikum<br><strong><?= $nama_siswa ?? 'Kayyis Nabil Atqiya' ?></strong></h1>
+  <p>Kelas <?= $kelas ?? '9' ?> – <?= $unit ?? 'PONPES' ?></p>
 </div>
 
-<!-- CONTENT -->
 <div class="container">
 
-  <!-- TAGIHAN -->
-  <div class="card bill">
-    <div class="bill-tag"><div class="dot"></div>TAGIHAN AKTIF</div>
-    <p>Sisa Tagihan Saat Ini</p>
-    <div class="amount">Rp 1.250.000</div>
-    <small>Jatuh Tempo: 20 Jan 2026</small>
-
-    <button class="btn">BAYAR SEKARANG</button>
-    <a class="link">Lihat rincian tagihan →</a>
-  </div>
-
-  <!-- GRID DESKTOP -->
-  <div class="desktop-grid">
-
-    <!-- INFO SISWA -->
-    <div class="card">
-      <strong>INFORMASI SISWA</strong>
-
-      <div class="info-row">
-        <div class="icon">ID</div>
-        <div>NIS: 23141017</div>
-      </div>
-      <div class="info-row">
-        <div class="icon">🏫</div>
-        <div>PONPES</div>
-      </div>
-      <div class="info-row">
-        <div class="icon">✔</div>
-        <div>Aktif</div>
-      </div>
-
-      <a class="link">Detail lengkap di Pengaturan Siswa</a>
+  <!-- TAGIHAN AKTIF -->
+  <?php if(($sisa_tagihan ?? 1250000) > 0): ?>
+  <div class="card tagihan">
+    <div class="label">🟡 TAGIHAN AKTIF</div>
+    <div class="amount">
+      Rp <?= number_format($sisa_tagihan ?? 1250000,0,',','.') ?>
     </div>
-
-    <!-- HISTORI -->
-    <div class="card">
-      <strong>HISTORI TRANSAKSI</strong>
-      <p>20 Apr 2024 – SPP Santri – Rp 750.000 (Belum Dibayar)</p>
-      <p>10 Apr 2024 – Uang Lauk – Rp 300.000 (Lunas)</p>
-      <a class="link">Lihat semua histori →</a>
+    <div class="due">
+      Jatuh Tempo: <?= $jatuh_tempo ?? '20 Jan 2026' ?>
     </div>
+    <a href="bayar.php" class="btn">BAYAR SEKARANG</a>
+    <a href="rincian-tagihan.php" class="link">Lihat rincian tagihan →</a>
+  </div>
+  <?php endif; ?>
 
+  <!-- INFO SISWA -->
+  <div class="card info">
+    <div class="row">
+      <span>NIS</span>
+      <strong><?= $nis ?? '23141017' ?></strong>
+    </div>
+    <div class="row">
+      <span>Unit</span>
+      <strong><?= $unit ?? 'PONPES' ?></strong>
+    </div>
   </div>
 
-  <!-- MENU MOBILE -->
-  <div class="menu">
-    <div class="menu-item"><div class="menu-icon">💳</div><span>Tagihan</span></div>
-    <div class="menu-item"><div class="menu-icon">📄</div><span>Kesanggupan Biaya</span></div>
-    <div class="menu-item"><div class="menu-icon">⏱</div><span>Histori Transaksi</span></div>
-    <div class="menu-item"><div class="menu-icon">👤</div><span>Pengaturan Siswa</span></div>
-    <div class="menu-item"><div class="menu-icon">ℹ</div><span>Cara Pembayaran</span></div>
+  <!-- MENU -->
+  <div class="grid">
+    <a class="menu" href="tagihan.php">💳<span>Tagihan</span></a>
+    <a class="menu" href="kesanggupan.php">📝<span>Kesanggupan Biaya</span></a>
+    <a class="menu" href="histori.php">⏱️<span>Histori Transaksi</span></a>
+    <a class="menu" href="profil.php">👤<span>Profil Siswa</span></a>
+    <a class="menu" href="cara-bayar.php">ℹ️<span>Cara Pembayaran</span></a>
   </div>
 
 </div>
-</div>
-</div>
+
 </body>
 </html>
