@@ -167,6 +167,22 @@ iframe{
   height:220px;
   border-radius:8px;
 }
+
+  .btn-copy-small{
+  margin-top:6px;
+  padding:4px 8px;
+  font-size:12px;
+  border-radius:6px;
+  border:none;
+  background:#e5e7eb;
+  color:#111;
+  cursor:pointer;
+  width:auto;
+}
+.btn-copy-small:hover{
+  background:#d1d5db;
+}
+
 </style>
 
 <script>
@@ -213,9 +229,20 @@ function toggleVideo(id){
 <!-- NOMINAL -->
 <div class="card">
   <h3>Nominal yang Dibayarkan</h3>
-  <div class="amount">Rp 550.000</div>
-  <div class="note">Status pembayaran akan tercatat otomatis</div>
+
+  <div class="amount" id="nominal-text">
+    Rp 550.000
+  </div>
+
+  <button class="btn-copy-small" onclick="copyNominal()">
+    📋 Salin Nominal
+  </button>
+
+  <div class="note">
+    Nominal disalin tanpa tanda Rp dan titik
+  </div>
 </div>
+
 
 <!-- CARA PEMBAYARAN -->
 <div class="card">
