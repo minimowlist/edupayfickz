@@ -114,6 +114,7 @@ body{
   align-items:center;
   cursor:pointer;
   user-select:none;
+  padding:4px 0;              /* ⬅️ tambahan */
 }
 .toggle-header .left{
   display:flex;
@@ -133,17 +134,17 @@ body{
   overflow:hidden;
   height:auto;
   transition:height .3s ease;
+  padding-top:14px;           /* ⬅️ BARU */
 }
-.toggle-content.is-collapsing,
-.toggle-content.is-expanding{
-  overflow:hidden;
+.card.collapsed .toggle-content{
+  padding-top:0;              /* ⬅️ biar nutup rapih */
 }
 
 /* ===== SUMMARY ===== */
 .summary .row{
   display:flex;
   justify-content:space-between;
-  padding:8px 0;
+  padding:10px 0;             /* sebelumnya 8px */
   border-bottom:1px solid var(--line);
   font-size:14px;
 }
@@ -154,7 +155,7 @@ body{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:10px 0;
+  padding:12px 0;             /* sebelumnya 10px */
   border-bottom:1px solid var(--line);
   font-size:14px;
 }
