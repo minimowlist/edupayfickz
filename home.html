@@ -75,41 +75,6 @@ body{
   margin-bottom:16px;
 }
 
-/* ===== TOGGLE HEADER ===== */
-.toggle-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  cursor:pointer;
-  user-select:none;
-}
-.toggle-header .left{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-weight:700;
-  font-size:14px;
-}
-.toggle-header i.chevron{
-  transition:transform .25s ease;
-  color:var(--muted);
-}
-.card.collapsed i.chevron{
-  transform:rotate(-90deg);
-}
-
-/* ===== TOGGLE CONTENT ===== */
-.toggle-content{
-  margin-top:12px;
-  overflow:hidden;
-  transition:max-height .3s ease, opacity .2s ease;
-}
-.card.collapsed .toggle-content{
-  max-height:0;
-  opacity:0;
-  margin-top:0;
-}
-
 /* ===== TAGIHAN ===== */
 .tagihan{
   background:linear-gradient(#fffdf4,#fff8e6);
@@ -132,6 +97,48 @@ body{
   color:#fff;
   font-weight:800;
   text-decoration:none;
+}
+.link{
+  display:block;
+  text-align:center;
+  margin-top:10px;
+  font-size:14px;
+  color:var(--green-dark);
+  text-decoration:none;
+}
+
+/* ===== TOGGLE ===== */
+.toggle-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  cursor:pointer;
+  user-select:none;
+}
+.toggle-header .left{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-weight:700;
+  font-size:14px;
+}
+.chevron{
+  transition:transform .25s ease;
+  color:var(--muted);
+}
+.card.collapsed .chevron{
+  transform:rotate(-90deg);
+}
+.toggle-content{
+  overflow:hidden;
+  max-height:1000px;
+  transition:max-height .3s ease, opacity .2s ease;
+  margin-top:12px;
+}
+.card.collapsed .toggle-content{
+  max-height:0;
+  opacity:0;
+  margin-top:0;
 }
 
 /* ===== SUMMARY ===== */
@@ -161,6 +168,31 @@ body{
 }
 .history-left i{color:var(--green)}
 
+/* ===== MENU ===== */
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+.menu{
+  background:#fff;
+  border-radius:18px;
+  padding:20px 10px;
+  text-align:center;
+  box-shadow:0 4px 14px rgba(0,0,0,.06);
+  text-decoration:none;
+  color:var(--text);
+  font-weight:700;
+}
+.menu i{
+  font-size:22px;
+  color:var(--green-dark);
+}
+.menu span{
+  display:block;
+  margin-top:10px;
+  font-size:14px;
+}
 </style>
 </head>
 
@@ -182,7 +214,7 @@ body{
 
 <main class="container">
 
-  <!-- TAGIHAN AKTIF (TIDAK DITOGGLE) -->
+  <!-- TAGIHAN AKTIF -->
   <section class="card tagihan">
     <div style="font-weight:700;font-size:14px;margin-bottom:6px">
       🟡 TAGIHAN AKTIF
@@ -192,10 +224,11 @@ body{
     <a href="#" class="btn">
       <i class="fa-solid fa-credit-card"></i> Bayar Sekarang
     </a>
+    <a href="#" class="link">Lihat rincian tagihan →</a>
   </section>
 
-  <!-- RINGKASAN (TOGGLE) -->
-  <section class="card summary" id="summaryCard">
+  <!-- RINGKASAN (DEFAULT HIDE) -->
+  <section class="card summary collapsed" id="summaryCard">
     <div class="toggle-header" onclick="toggleCard('summaryCard')">
       <div class="left">
         <i class="fa-solid fa-chart-pie"></i>
@@ -203,7 +236,6 @@ body{
       </div>
       <i class="fa-solid fa-chevron-down chevron"></i>
     </div>
-
     <div class="toggle-content">
       <div class="row">
         <span>Total Dibayar</span>
@@ -216,8 +248,8 @@ body{
     </div>
   </section>
 
-  <!-- HISTORI (TOGGLE) -->
-  <section class="card" id="historyCard">
+  <!-- HISTORI (DEFAULT HIDE) -->
+  <section class="card collapsed" id="historyCard">
     <div class="toggle-header" onclick="toggleCard('historyCard')">
       <div class="left">
         <i class="fa-solid fa-clock-rotate-left"></i>
@@ -225,7 +257,6 @@ body{
       </div>
       <i class="fa-solid fa-chevron-down chevron"></i>
     </div>
-
     <div class="toggle-content">
       <div class="history-item">
         <div class="history-left">
@@ -248,7 +279,28 @@ body{
         </div>
         <strong>Rp 250.000</strong>
       </div>
+      <a href="#" class="link">Lihat semua histori →</a>
     </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="grid">
+    <a class="menu" href="#">
+      <i class="fa-solid fa-wallet"></i>
+      <span>Tagihan</span>
+    </a>
+    <a class="menu" href="#">
+      <i class="fa-solid fa-file-signature"></i>
+      <span>Kesanggupan Biaya</span>
+    </a>
+    <a class="menu" href="#">
+      <i class="fa-solid fa-clock-rotate-left"></i>
+      <span>Histori Transaksi</span>
+    </a>
+    <a class="menu" href="#">
+      <i class="fa-solid fa-circle-info"></i>
+      <span>Cara Pembayaran</span>
+    </a>
   </section>
 
 </main>
