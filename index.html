@@ -430,8 +430,29 @@ function loadYoutube(el){
   <!-- Accordion -->
   <div class="accordion">
 
+    <!-- Bank Jateng -->
+    <button class="acc-btn" onclick="toggleAcc('jateng')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" class="bank-icon">
+      Bank Jateng
+    </button>
+    <div id="jateng" class="acc-panel">
+      <ol class="steps">
+        <li>Buka <b>BCA Mobile</b> atau <b>Bima</b></li>
+        <li>Pilih menu <b>Pembayaran / Virtual Account</b></li>
+        <li>Masukkan Nomor Pembayaran</li>
+        <li>Konfirmasi transaksi</li>
+      </ol>
+      <div class="estimate">⏱ ±1 menit</div>
+      <button class="btn-video" onclick="toggleVideo('vid-bca')">🎥 Lihat Video Panduan</button>
+      <div id="vid-jateng" class="video-box">
+        <div class="yt-thumb" data-video="VIDEO_ID_BRIMO"
+       onclick="loadYoutube(this)">
+    ▶️ Tonton Video Panduan
+      </div>
+    </div>
+    
     <!-- BCA -->
-    <button onclick="toggleAcc('bca')">
+    <button class="acc-btn" onclick="toggleAcc('bca')">
       <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" class="bank-icon">
       Bank Central Asia (BCA)
     </button>
