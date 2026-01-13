@@ -29,9 +29,7 @@ body{
 
 /* ===== HEADER ===== */
 .header{
-  background:
-    linear-gradient(135deg,#1e9e6a,#38b78a),
-    radial-gradient(circle at top right,rgba(255,255,255,.28),transparent 60%);
+  background:linear-gradient(135deg,#1e9e6a,#38b78a);
   color:#fff;
   padding:calc(14px + env(safe-area-inset-top)) 16px 22px;
   border-bottom-left-radius:22px;
@@ -53,24 +51,13 @@ body{
   height:40px;
   border-radius:50%;
   border:2px solid rgba(255,255,255,.8);
-  object-fit:cover;
 }
 .greet{
   margin-top:10px;
 }
-.greet small{
-  font-size:13px;
-  opacity:.9;
-}
-.greet h1{
-  font-size:17px;
-  margin:2px 0 4px;
-}
-.greet p{
-  margin:0;
-  font-size:13px;
-  opacity:.9;
-}
+.greet small{font-size:13px;opacity:.9}
+.greet h1{font-size:17px;margin:2px 0 4px}
+.greet p{margin:0;font-size:13px;opacity:.9}
 
 /* ===== CONTAINER ===== */
 .container{
@@ -87,13 +74,40 @@ body{
   box-shadow:0 6px 18px rgba(0,0,0,.06);
   margin-bottom:16px;
 }
-.card-title{
+
+/* ===== TOGGLE HEADER ===== */
+.toggle-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  cursor:pointer;
+  user-select:none;
+}
+.toggle-header .left{
   display:flex;
   align-items:center;
   gap:8px;
   font-weight:700;
   font-size:14px;
-  margin-bottom:10px;
+}
+.toggle-header i.chevron{
+  transition:transform .25s ease;
+  color:var(--muted);
+}
+.card.collapsed i.chevron{
+  transform:rotate(-90deg);
+}
+
+/* ===== TOGGLE CONTENT ===== */
+.toggle-content{
+  margin-top:12px;
+  overflow:hidden;
+  transition:max-height .3s ease, opacity .2s ease;
+}
+.card.collapsed .toggle-content{
+  max-height:0;
+  opacity:0;
+  margin-top:0;
 }
 
 /* ===== TAGIHAN ===== */
@@ -106,10 +120,7 @@ body{
   font-weight:800;
   margin:6px 0;
 }
-.muted{
-  color:var(--muted);
-  font-size:14px;
-}
+.muted{color:var(--muted);font-size:14px}
 .btn{
   display:block;
   width:100%;
@@ -120,14 +131,6 @@ body{
   background:linear-gradient(135deg,var(--green),var(--green-dark));
   color:#fff;
   font-weight:800;
-  text-decoration:none;
-}
-.link{
-  display:block;
-  text-align:center;
-  margin-top:10px;
-  font-size:14px;
-  color:var(--green-dark);
   text-decoration:none;
 }
 
@@ -156,49 +159,20 @@ body{
   align-items:center;
   gap:8px;
 }
-.history-left i{
-  color:var(--green);
-}
+.history-left i{color:var(--green)}
 
-/* ===== MENU ===== */
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-}
-.menu{
-  background:#fff;
-  border-radius:18px;
-  padding:20px 10px;
-  text-align:center;
-  box-shadow:0 4px 14px rgba(0,0,0,.06);
-  text-decoration:none;
-  color:var(--text);
-  font-weight:700;
-}
-.menu i{
-  font-size:22px;
-  color:var(--green-dark);
-}
-.menu span{
-  display:block;
-  margin-top:10px;
-  font-size:14px;
-}
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header class="header">
   <div class="header-top">
     <div class="brand">
       <i class="fa-solid fa-book-open"></i> EduPay
     </div>
-    <img class="avatar" src="https://i.pravatar.cc/80?img=12" alt="Profil">
+    <img class="avatar" src="https://i.pravatar.cc/80?img=12">
   </div>
-
   <div class="greet">
     <small>Assalamualaikum</small>
     <h1>Kayyis Nabil Atqiya</h1>
@@ -208,91 +182,82 @@ body{
 
 <main class="container">
 
-  <!-- TAGIHAN AKTIF -->
+  <!-- TAGIHAN AKTIF (TIDAK DITOGGLE) -->
   <section class="card tagihan">
-    <div class="card-title">
-      <i class="fa-solid fa-circle" style="color:#f59e0b"></i>
-      TAGIHAN AKTIF
+    <div style="font-weight:700;font-size:14px;margin-bottom:6px">
+      🟡 TAGIHAN AKTIF
     </div>
     <div class="amount">Rp 1.250.000</div>
     <div class="muted">Jatuh Tempo: 20 Januari 2026</div>
     <a href="#" class="btn">
       <i class="fa-solid fa-credit-card"></i> Bayar Sekarang
     </a>
-    <a href="#" class="link">Lihat rincian tagihan →</a>
   </section>
 
-  <!-- RINGKASAN TAHUN -->
-  <section class="card summary">
-    <div class="card-title">
-      <i class="fa-solid fa-chart-pie"></i>
-      RINGKASAN TAHUN AJARAN 2025/2026
+  <!-- RINGKASAN (TOGGLE) -->
+  <section class="card summary" id="summaryCard">
+    <div class="toggle-header" onclick="toggleCard('summaryCard')">
+      <div class="left">
+        <i class="fa-solid fa-chart-pie"></i>
+        RINGKASAN TAHUN AJARAN 2025/2026
+      </div>
+      <i class="fa-solid fa-chevron-down chevron"></i>
     </div>
-    <div class="row">
-      <span>Total Dibayar</span>
-      <strong>Rp 3.750.000</strong>
-    </div>
-    <div class="row">
-      <span>Sisa Tahun Ini</span>
-      <strong>Rp 1.250.000</strong>
+
+    <div class="toggle-content">
+      <div class="row">
+        <span>Total Dibayar</span>
+        <strong>Rp 3.750.000</strong>
+      </div>
+      <div class="row">
+        <span>Sisa Tahun Ini</span>
+        <strong>Rp 1.250.000</strong>
+      </div>
     </div>
   </section>
 
-  <!-- HISTORI TERAKHIR -->
-  <section class="card">
-    <div class="card-title">
-      <i class="fa-solid fa-clock-rotate-left"></i>
-      HISTORI TERAKHIR
-    </div>
-
-    <div class="history-item">
-      <div class="history-left">
-        <i class="fa-solid fa-check-circle"></i>
-        SPP Januari 2026
+  <!-- HISTORI (TOGGLE) -->
+  <section class="card" id="historyCard">
+    <div class="toggle-header" onclick="toggleCard('historyCard')">
+      <div class="left">
+        <i class="fa-solid fa-clock-rotate-left"></i>
+        HISTORI TERAKHIR
       </div>
-      <strong>Rp 500.000</strong>
+      <i class="fa-solid fa-chevron-down chevron"></i>
     </div>
 
-    <div class="history-item">
-      <div class="history-left">
-        <i class="fa-solid fa-check-circle"></i>
-        SPP Desember 2025
+    <div class="toggle-content">
+      <div class="history-item">
+        <div class="history-left">
+          <i class="fa-solid fa-check-circle"></i>
+          SPP Januari 2026
+        </div>
+        <strong>Rp 500.000</strong>
       </div>
-      <strong>Rp 500.000</strong>
-    </div>
-
-    <div class="history-item">
-      <div class="history-left">
-        <i class="fa-solid fa-check-circle"></i>
-        Uang Kegiatan
+      <div class="history-item">
+        <div class="history-left">
+          <i class="fa-solid fa-check-circle"></i>
+          SPP Desember 2025
+        </div>
+        <strong>Rp 500.000</strong>
       </div>
-      <strong>Rp 250.000</strong>
+      <div class="history-item">
+        <div class="history-left">
+          <i class="fa-solid fa-check-circle"></i>
+          Uang Kegiatan
+        </div>
+        <strong>Rp 250.000</strong>
+      </div>
     </div>
-
-    <a href="#" class="link">Lihat semua histori →</a>
-  </section>
-
-  <!-- MENU -->
-  <section class="grid">
-    <a class="menu" href="#">
-      <i class="fa-solid fa-wallet"></i>
-      <span>Tagihan</span>
-    </a>
-    <a class="menu" href="#">
-      <i class="fa-solid fa-file-signature"></i>
-      <span>Kesanggupan Biaya</span>
-    </a>
-    <a class="menu" href="#">
-      <i class="fa-solid fa-clock-rotate-left"></i>
-      <span>Histori Transaksi</span>
-    </a>
-    <a class="menu" href="#">
-      <i class="fa-solid fa-circle-info"></i>
-      <span>Cara Pembayaran</span>
-    </a>
   </section>
 
 </main>
+
+<script>
+function toggleCard(id){
+  document.getElementById(id).classList.toggle('collapsed');
+}
+</script>
 
 </body>
 </html>
