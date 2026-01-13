@@ -4,7 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Bina Insan Kamil Edupayment - Home</title>
-
+<link rel="icon" type="image/png" sizes="32x32" href="logo-edupay.png">
+<link rel="apple-touch-icon" href="logo-edupay.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
@@ -138,6 +139,20 @@ body{
   text-decoration:none;
 }
 
+.brand{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-weight:700;
+}
+
+.brand-logo{
+  width:22px;
+  height:22px;
+  max-width:22px;
+  max-height:22px;
+  object-fit:contain;
+}
 /* ===== SUMMARY ===== */
 .summary .row{
   display:flex;
@@ -242,10 +257,14 @@ body{
 <body>
 
 <header class="header">
-  <div class="header-top">
-    <div class="brand">
-      <i class="fa-solid fa-book-open"></i> Bina Insan Kamil
-    </div>
+  <div class="brand">
+  <img
+    src="https://blogger.googleusercontent.com/img/a/AVvXsEjnCgerqhvorVStdAEsS7qsSLjKQ2Eo0uLpcYVrX78kEYQRDBalMft4PC8dJ4Tfs80faG7pEGfj_Wpm6s107ZOLmuvSWCShHYl84Odlvudd7nzuZ_1QHZI1fjpTd2YYP97pnS_ZuTfhfxldWzmjj5QPVUHqlz1OCIs02Zv_TCOD5pcA-p2AeYKdxywj1bc"
+    alt="EduPay"
+    class="brand-logo"
+  >
+  <span>EduPay</span>
+</div>
     <img class="avatar" src="https://i.pravatar.cc/80?img=12">
   </div>
   <div class="greet">
