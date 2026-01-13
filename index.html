@@ -360,6 +360,7 @@ function loadYoutube(el){
   <h3>Cara Pembayaran</h3>
 
  <div class="method">
+
   <div class="method-header">
     <div class="bank-label">
       <img
@@ -375,7 +376,6 @@ function loadYoutube(el){
     </button>
   </div>
 
-  <!-- STEPS (TIDAK HILANG) -->
   <ol class="steps">
     <li>Buka aplikasi <b>BRI Mobile</b></li>
     <li>Pilih menu <b>BRIVA / Virtual Account</b></li>
@@ -385,15 +385,15 @@ function loadYoutube(el){
 
   <div class="estimate">⏱ Estimasi waktu: ±1 menit</div>
 
-  <!-- VIDEO -->
   <div id="v-brimo" class="video-box">
-    <div class="yt-thumb" data-video="VIDEO_ID_BRIMO"
-       onclick="loadYoutube(this)">
-    ▶️ Tonton Video Panduan
+    <div class="yt-thumb"
+         data-video="VIDEO_ID_BRIMO"
+         onclick="loadYoutube(this)">
+      ▶️ Tonton Video Panduan
+    </div>
   </div>
 
 </div>
-
 
   <div class="method">
     <div class="method-header">
@@ -414,7 +414,6 @@ function loadYoutube(el){
   </div>
 
   <!-- BANK LAIN -->
-<div class="method">
 <div class="card">
   <h3>🏦 Pembayaran melalui Bank Lain</h3>
 
@@ -432,7 +431,7 @@ function loadYoutube(el){
   <div class="accordion">
 
     <!-- BCA -->
-    <button class="acc-btn" onclick="toggleAcc('bca')">
+    <button onclick="toggleAcc('bca')">
       <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" class="bank-icon">
       Bank Central Asia (BCA)
     </button>
