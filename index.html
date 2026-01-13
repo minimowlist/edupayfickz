@@ -64,7 +64,22 @@ button{
   background:#2563eb;
   color:#fff;
   margin-top:8px;
+  transition:background 0.2s ease;
 }
+
+.btn-copy i{
+  margin-right:6px;
+  transition:transform 0.2s ease;
+}
+
+.btn-copy.copied{
+  background:#16a34a; /* hijau sukses */
+}
+
+.btn-copy.copied i{
+  transform:scale(1.15);
+}
+
 .btn-video{
   width:auto;
   padding:6px 10px;
@@ -217,9 +232,23 @@ iframe{
 </style>
 
 <script>
-function copyVA(){
-  navigator.clipboard.writeText("800008080024066");
-  alert("Nomor pembayaran berhasil disalin");
+function copyVA(btn){
+  const va = "800008080024066";
+  navigator.clipboard.writeText(va);
+
+  const icon = btn.querySelector('i');
+  const originalClass = icon.className;
+  const originalText = btn.innerHTML;
+
+  // ubah ke state sukses
+  icon.className = "fa-solid fa-check";
+  btn.classList.add('copied');
+
+  // balik ke normal
+  setTimeout(() => {
+    icon.className = originalClass;
+    btn.classList.remove('copied');
+  }, 1200);
 }
 
 function toggleAcc(id){
@@ -269,7 +298,13 @@ function copyNominal(btn){
 <div class="card">
   <h3>Nomor Pembayaran (Virtual Account)</h3>
   <div class="va">80000 808 0024066</div>
-  <button class="btn-copy" onclick="copyVA()">📋 Salin Nomor</button>
+  <button
+  class="btn-copy"
+  onclick="copyVA(this)"
+  title="Salin Nomor Pembayaran"
+>
+  <i class="fa-solid fa-copy"></i> Salin Nomor
+</button>
   <div class="note">
     Gunakan nomor ini pada menu <b>Virtual Account / Pembayaran</b>  
     di aplikasi bank Anda
