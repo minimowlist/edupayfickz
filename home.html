@@ -136,9 +136,6 @@ body{
   transition:height .3s ease;
   padding-top:14px;           /* ⬅️ BARU */
 }
-.card.collapsed .toggle-content{
-  padding-top:0;              /* ⬅️ biar nutup rapih */
-}
 
 /* ===== SUMMARY ===== */
 .summary .row{
@@ -315,30 +312,33 @@ function toggleCard(id){
   const isCollapsed = card.classList.contains('collapsed');
 
   if(isCollapsed){
-    // EXPAND
+    /* ===== EXPAND ===== */
     card.classList.remove('collapsed');
+
     content.style.height = '0px';
 
     requestAnimationFrame(() => {
       content.style.height = content.scrollHeight + 'px';
     });
 
-    content.addEventListener('transitionend', function handler(){
+    content.addEventListener('transitionend', function openHandler(e){
+      if(e.propertyName !== 'height') return;
       content.style.height = 'auto';
-      content.removeEventListener('transitionend', handler);
+      content.removeEventListener('transitionend', openHandler);
     });
 
   }else{
-    // COLLAPSE
+    /* ===== COLLAPSE ===== */
     content.style.height = content.scrollHeight + 'px';
 
     requestAnimationFrame(() => {
       content.style.height = '0px';
     });
 
-    content.addEventListener('transitionend', function handler(){
-      card.classList.add('collapsed');
-      content.removeEventListener('transitionend', handler);
+    content.addEventListener('transitionend', function closeHandler(e){
+      if(e.propertyName !== 'height') return;
+      card.classList.add('collapsed');   // ⬅️ DI SINI, SETELAH ANIMASI
+      content.removeEventListener('transitionend', closeHandler);
     });
   }
 }
