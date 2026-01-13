@@ -168,18 +168,24 @@ iframe{
   border-radius:8px;
 }
 
-  .btn-copy-small{
-  margin-top:6px;
-  padding:4px 8px;
-  font-size:12px;
-  border-radius:6px;
+  .amount-row{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+
+.btn-copy-inline{
   border:none;
   background:#e5e7eb;
-  color:#111;
+  border-radius:6px;
+  padding:4px 6px;
+  font-size:13px;
   cursor:pointer;
-  width:auto;
+  line-height:1;
 }
-.btn-copy-small:hover{
+
+.btn-copy-inline:hover{
   background:#d1d5db;
 }
 
@@ -230,18 +236,18 @@ function toggleVideo(id){
 <div class="card">
   <h3>Nominal yang Dibayarkan</h3>
 
-  <div class="amount" id="nominal-text">
-    Rp 550.000
+  <div class="amount-row">
+    <div class="amount" id="nominal-text">Rp 550.000</div>
+    <button class="btn-copy-inline" onclick="copyNominal()" title="Salin Nominal">
+      📋
+    </button>
   </div>
-
-  <button class="btn-copy-small" onclick="copyNominal()">
-    📋 Salin Nominal
-  </button>
 
   <div class="note">
     Nominal disalin tanpa tanda Rp dan titik
   </div>
 </div>
+
 
 
 <!-- CARA PEMBAYARAN -->
