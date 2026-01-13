@@ -168,6 +168,10 @@ iframe{
   border-radius:8px;
 }
 
+.amount{
+  line-height:1.2;
+}
+  
   .amount-row{
   display:flex;
   align-items:center;
@@ -176,14 +180,13 @@ iframe{
 }
 
 .btn-copy-inline{
-  border:none;
-  background:#e5e7eb;
-  border-radius:6px;
-  padding:4px 6px;
+  width:auto;              /* ⬅️ override width:100% */
+  padding:4px 6px;         /* kecil & rapi */
   font-size:13px;
-  cursor:pointer;
   line-height:1;
+  flex-shrink:0;           /* jangan ikut menyusut */
 }
+
 
 .btn-copy-inline:hover{
   background:#d1d5db;
