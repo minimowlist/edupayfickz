@@ -190,6 +190,52 @@ body{
   margin-top:10px;
   font-size:14px;
 }
+
+/* ===== MINI TOGGLE (RINGKAS & TENANG) ===== */
+.mini-toggle{
+  background:#ffffff;
+  border-radius:14px;
+  padding:12px 14px;
+  margin-bottom:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,.05);
+}
+
+.mini-toggle-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  cursor:pointer;
+}
+
+.mini-toggle-title{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-weight:600;
+  font-size:14px;
+}
+
+.mini-toggle-title i{
+  font-size:15px;
+  color:var(--green-dark);
+}
+
+.mini-chevron{
+  font-size:13px;
+  color:#9ca3af;
+  transition:transform .25s ease;
+}
+
+.mini-toggle.collapsed .mini-chevron{
+  transform:rotate(-90deg);
+}
+
+.mini-toggle-content{
+  overflow:hidden;
+  height:0;
+  transition:height .3s cubic-bezier(.4,0,.2,1);
+  margin-top:10px;
+}
 </style>
 </head>
 
@@ -224,23 +270,53 @@ body{
     <a href="#" class="link">Lihat rincian tagihan →</a>
   </section>
 
-<!-- RINGKASAN TAHUN AJARAN -->
-<a href="#" class="simple-row">
-  <div class="left">
-    <i class="fa-solid fa-chart-pie"></i>
-    Ringkasan Tahun Ajaran 2025/2026
+<!-- MINI TOGGLE: RINGKASAN -->
+<div class="mini-toggle collapsed" id="ringkasanToggle">
+  <div class="mini-toggle-header" onclick="toggleMini('ringkasanToggle')">
+    <div class="mini-toggle-title">
+      <i class="fa-solid fa-chart-pie"></i>
+      Ringkasan Tahun Ajaran 2025/2026
+    </div>
+    <i class="fa-solid fa-chevron-down mini-chevron"></i>
   </div>
-  <i class="fa-solid fa-chevron-right chevron"></i>
-</a>
 
-<!-- HISTORI TERAKHIR -->
-<a href="#" class="simple-row">
-  <div class="left">
-    <i class="fa-solid fa-clock-rotate-left"></i>
-    Histori Terakhir
+  <div class="mini-toggle-content">
+    <div style="display:flex;justify-content:space-between;padding:8px 0;font-size:14px">
+      <span>Total Dibayar</span>
+      <strong>Rp 3.750.000</strong>
+    </div>
+    <div style="display:flex;justify-content:space-between;padding:8px 0;font-size:14px">
+      <span>Sisa Tahun Ini</span>
+      <strong>Rp 1.250.000</strong>
+    </div>
   </div>
-  <i class="fa-solid fa-chevron-right chevron"></i>
-</a>
+</div>
+
+<!-- MINI TOGGLE: HISTORI -->
+<div class="mini-toggle collapsed" id="historiToggle">
+  <div class="mini-toggle-header" onclick="toggleMini('historiToggle')">
+    <div class="mini-toggle-title">
+      <i class="fa-solid fa-clock-rotate-left"></i>
+      Histori Terakhir
+    </div>
+    <i class="fa-solid fa-chevron-down mini-chevron"></i>
+  </div>
+
+  <div class="mini-toggle-content">
+    <div style="display:flex;justify-content:space-between;padding:8px 0;font-size:14px">
+      <span>SPP Januari 2026</span>
+      <strong>Rp 500.000</strong>
+    </div>
+    <div style="display:flex;justify-content:space-between;padding:8px 0;font-size:14px">
+      <span>SPP Desember 2025</span>
+      <strong>Rp 500.000</strong>
+    </div>
+    <div style="display:flex;justify-content:space-between;padding:8px 0;font-size:14px">
+      <span>Uang Kegiatan</span>
+      <strong>Rp 250.000</strong>
+    </div>
+  </div>
+</div>
 
   <!-- MENU -->
   <section class="grid">
@@ -263,6 +339,38 @@ body{
   </section>
 
 </main>
+
+<script>
+function toggleMini(id){
+  const box = document.getElementById(id);
+  const content = box.querySelector('.mini-toggle-content');
+  const isCollapsed = box.classList.contains('collapsed');
+
+  if(isCollapsed){
+    box.classList.remove('collapsed');
+    content.style.height = content.scrollHeight + 'px';
+
+    content.addEventListener('transitionend', function openHandler(e){
+      if(e.propertyName !== 'height') return;
+      content.style.height = 'auto';
+      content.removeEventListener('transitionend', openHandler);
+    });
+
+  }else{
+    content.style.height = content.scrollHeight + 'px';
+
+    requestAnimationFrame(() => {
+      content.style.height = '0px';
+    });
+
+    content.addEventListener('transitionend', function closeHandler(e){
+      if(e.propertyName !== 'height') return;
+      box.classList.add('collapsed');
+      content.removeEventListener('transitionend', closeHandler);
+    });
+  }
+}
+</script>
 
 </body>
 </html>
